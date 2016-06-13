@@ -6,6 +6,10 @@ class Session:
         self.socket = socket
 
     def close(self):
+        """
+        Force lose socket on demand
+        :return:
+        """
         variables.connections.remove(self)
         self.socket.close()
 

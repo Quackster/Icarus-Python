@@ -3,11 +3,16 @@ import variables
 
 
 def parse(session, incoming_message):
+    """
+    Parse incoming data from client
+    :param session: the session who is currently connected
+    :param incoming_message: the message to parse
+    :return:
+    """
+    message = incoming_message[4:][:int(incoming_message[:4])]
 
-    message_length = int(incoming_message[:4])
-
-    message = incoming_message[4:][:message_length]
     message_parts = message.split(' ')
+
     message_header = message_parts[0]
     message_data = message[len(message_header) + 1:] # Message without the header
 
