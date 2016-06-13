@@ -6,6 +6,8 @@ class Session:
         self.socket = socket
 
     def close(self):
-        print ("closed br00")
         variables.connections.remove(self)
+        self.socket.close()
+
+        print ("SOCKET CLOSED")
 
