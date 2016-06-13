@@ -1,3 +1,4 @@
+import variables
 
 
 class Session:
@@ -6,3 +7,5 @@ class Session:
 
     def close(self):
         print ("closed br00")
+        variables.connections.remove(self)
+
