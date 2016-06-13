@@ -16,9 +16,9 @@ class Connection(asyncore.dispatcher_with_send):
 
     def handle_read(self):
         data = self.recv(1024)
-        connection = self
+        session = variables.async_server.find_session_by_socket(self)
+
         if data:
-            message_handler.parse(connection, data.decode())
+            message_handler.parse(session, data.decode())
         else:
-            session = variables.async_server.find_session_by_socket(connection)
             session.close()
