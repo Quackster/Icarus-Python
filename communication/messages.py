@@ -1,3 +1,4 @@
+import itertools
 from communication.packets.LOGIN import *
 
 
@@ -9,5 +10,5 @@ class Messages:
     def incoming_message(self, connection, header, message):
 
         for message in self.packets:
-            if message.header == header:
+            if message.__class__.__name__ == header:
                 message.handle(connection, message)

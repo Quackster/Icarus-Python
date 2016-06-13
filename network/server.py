@@ -12,7 +12,7 @@ class Server(asyncore.dispatcher):
         self.bind((host, port))
         self.listen(5)
 
-        self.asyncore = asyncore
+        self.listener = asyncore
 
     def handle_accept(self):
         pair = self.accept()
