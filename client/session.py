@@ -1,5 +1,8 @@
 
 
 class Session:
-    def __init(self, socket):
+    def __init__(self, socket):
         self.socket = socket
+
+    def close(self):
+        print ("closed br00")
