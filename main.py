@@ -2,19 +2,19 @@ import network.server as server
 from communication.messages import *
 
 import util.logging as log
-import variables
+import game
 
 log.info("Mobiles disco test network.")
 log.info("Loading packet handler")
-variables.messages = Messages()
+game.messages = Messages()
 
 log.info("Starting network")
 
-variables.port = 91;
-variables.ip = "localhost"
+game.port = 91;
+game.ip = "localhost"
 
 try:
-    variables.async_server = server.Server(variables.ip, variables.port)
-    log.info("Listening on port " + str(variables.port))
+    game.async_server = server.Server(game.ip, game.port)
+    log.info("Listening on port " + str(game.port))
 except Exception as e:
     log.error("Could not bind to port: " + str(e))

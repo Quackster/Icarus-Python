@@ -1,5 +1,5 @@
 import util.logging as log
-import variables
+import game
 
 
 def parse(session, incoming_message):
@@ -18,4 +18,4 @@ def parse(session, incoming_message):
 
     log.info("Incoming message (" + message_header + "): " + message_data)
 
-    variables.messages.incoming_message(session, message_header, message_data)
+    game.messages.incoming_message(session, message_header, message_data)

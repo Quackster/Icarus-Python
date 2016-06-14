@@ -1,7 +1,7 @@
 import asyncore
 import socket
 import threading
-import variables
+import game
 
 from network.connection import *
 from client.session import *
@@ -47,7 +47,7 @@ class Server(asyncore.dispatcher):
         :param socket: Asyncore socket
         :return:
         """
-        for session in variables.connections:
+        for session in game.connections:
             if id(session.socket) == id(socket):
                 return session
 

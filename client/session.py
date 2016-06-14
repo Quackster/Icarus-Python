@@ -1,4 +1,4 @@
-import variables
+import game
 
 
 class Session:
@@ -10,7 +10,7 @@ class Session:
         Force lose socket on demand
         :return:
         """
-        variables.connections.remove(self)
+        game.connections.remove(self)
         self.socket.close()
 
         print ("SOCKET CLOSED")
