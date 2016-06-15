@@ -1,6 +1,6 @@
-async_server = None
-
+# Arrays
 connections = []
 
-port = 0
-ip = ""
+# Instances
+async_server = None
+messages = None

@@ -6,4 +6,4 @@ class LOGIN:
         :param message: the incoming message with login details
         :return:
         """
-        print ("Login request")
+        print ("USEROBJECT" + chr(13) + session.details.get_user_object())

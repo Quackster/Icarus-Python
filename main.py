@@ -4,17 +4,23 @@ from communication.messages import *
 import util.logging as log
 import game
 
-log.info("Mobiles disco test network.")
+log.line("###############")
+log.line("## pyMobiles ##")
+log.line("###############")
+log.line()
+log.line("Written by Quackster/TheAmazingAussie")
+log.line()
+log.info("Mobiles disco test server.")
 log.info("Loading packet handler")
 game.messages = Messages()
 
 log.info("Starting network")
 
-game.port = 91;
-game.ip = "localhost"
+port = 91;
+ip = "localhost"
 
 try:
-    game.async_server = server.Server(game.ip, game.port)
-    log.info("Listening on port " + str(game.port))
+    game.async_server = server.Server(ip, port)
+    log.info("Listening on port " + str(port))
 except Exception as e:
     log.error("Could not bind to port: " + str(e))

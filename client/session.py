@@ -1,9 +1,13 @@
 import game
-
+from client.details import *
 
 class Session:
     def __init__(self, socket):
         self.socket = socket
+        self.details = Details()
+
+    def send(self, data):
+        self.socket.send("#" + data + "##")
 
     def close(self):
         """
@@ -12,6 +16,4 @@ class Session:
         """
         game.connections.remove(self)
         self.socket.close()
-
-        print ("SOCKET CLOSED")
 
