@@ -25,6 +25,6 @@ class Connection(asyncore.dispatcher_with_send):
         session = game.async_server.find_session_by_socket(self)
 
         if data:
-            message_handler.parse(session, data.decode())
+            message_handler.parse(session, data)
         else:
             session.close()

@@ -5,18 +5,18 @@ import util.logging as log
 import game
 
 log.line("###############")
-log.line("## pyMobiles ##")
+log.line("## pyHabbo ##")
 log.line("###############")
 log.line()
 log.line("Written by Quackster/TheAmazingAussie")
 log.line()
-log.info("Mobiles disco test server.")
+log.info("Test Habbo Hotel python server.")
 log.info("Loading packet handler")
 game.messages = Messages()
 
 log.info("Starting network")
 
-port = 91;
+port = 3242;
 ip = "localhost"
 
 try:

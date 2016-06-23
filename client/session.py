@@ -7,7 +7,7 @@ class Session:
         self.details = Details()
 
     def send(self, data):
-        self.socket.send("#" + data + "##")
+        self.socket.send(data.encode())
 
     def close(self):
         """

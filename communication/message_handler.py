@@ -1,21 +1,28 @@
+from util.bytestream import *
 import util.logging as log
 import game
 
 
-def parse(session, incoming_message):
+def parse(session, response):
     """
     Parse incoming data from client
     :param session: the session who is currently connected
     :param incoming_message: the message to parse
     :return:
     """
-    message = incoming_message[4:][:int(incoming_message[:4])]
 
-    message_parts = message.split(' ')
+    if response[0] == 60:
+        session.send("<?xml version=\"1.0\"?>\r\n"
+                        + "<!DOCTYPE cross-domain-policy SYSTEM \"/xml/dtds/cross-domain-policy.dtd\">\r\n"
+                        + "<cross-domain-policy>\r\n"
+                        + "<allow-access-from domain=\"*\" to-ports=\"*\" />\r\n"
+                        + "</cross-domain-policy>\0")
+    else:
 
-    message_header = message_parts[0]
-    message_data = message[len(message_header) + 1:] # Message without the header
+        stream = ByteStream(response)
+        message_length = stream.read_int()
+        message_header = stream.read_short()
 
-    log.info("Incoming message (" + message_header + "): " + message_data)
+        print ("Received: " +  str(message_header) + " / " + response.decode("ISO-8859-1")[4:])
 
-    game.messages.incoming_message(session, message_header, message_data)
+        game.messages.incoming_message(session, message_header, stream)
