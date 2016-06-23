@@ -13,8 +13,8 @@ class Server(asyncore.dispatcher):
         Create asyncore socket with defined host and port
         :param host: the host/ip address to listen on, '' for all potential IP addresses
         :param port: the port the socket should listen on
-        :return:
         """
+
         asyncore.dispatcher.__init__(self)
         self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
         #self.set_reuse_addr()
@@ -27,7 +27,6 @@ class Server(asyncore.dispatcher):
     def handle_accept(self):
         """
         Override accept handling
-        :return:
         """
 
         pair = self.accept()
@@ -45,8 +44,8 @@ class Server(asyncore.dispatcher):
         """
         Find session by connected socket instance
         :param socket: Asyncore socket
-        :return:
         """
+
         for session in game.connections:
             if id(session.socket) == id(socket):
                 return session
