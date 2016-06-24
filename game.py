@@ -14,3 +14,6 @@ def get_connections():
 
 def get_message_handler():
     return message_handler
+
+def get_server():
+    return server

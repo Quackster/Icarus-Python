@@ -48,26 +48,25 @@ class Response:
 
         self.index += str_len
 
-    def write_bool_int(self, bool):
+    def write_bool_int(self, flag):
         """
         Write a 0 or 1 in int32 when a boolean is given
-        :param bool: true or false parameter
+        :param flag: true or false parameter
         """
-        if bool:
+        if flag:
             self.write_int(1)
         else:
             self.write_int(0)
 
-    def write_bool(self, bool):
+    def write_bool(self, flag):
         """
         Write a 0 or 1 in single bit when a boolean is given
-        :param bool: true or false parameter
+        :param flag: true or false parameter
         """
-        if bool:
-            self.buffer.extend(1)
+        if flag:
+             self.buffer.extend(struct.pack(">?", True))
         else:
-            self.buffer.extend(0)
-
+             self.buffer.extend(struct.pack(">?", False))
         self.index += 1
 
     def get_buffer(self):
