@@ -1,10 +1,9 @@
 """
-Class for decoding messages which are received
+Class for encoding messages which are sent
 Author: Alex (TheAmazingAussie)
 """
 
-import game
-from communication.messages.request import *
+from communication.messages.response import Response
 
 
 def encode(response):
@@ -16,5 +15,6 @@ def encode(response):
 
     if type(response) is str:
         return response.encode()
-    else:
+
+    if type(response) is Response:
         return response.get_buffer()

@@ -2,21 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="4d87400e-3092-4a9e-8d7b-1fbee98e717a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/communication/codec/message_encoder.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/details.py" afterPath="$PROJECT_DIR$/client/details.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/client/session.py" afterPath="$PROJECT_DIR$/client/session.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/codec/message_decoder.py" afterPath="$PROJECT_DIR$/communication/codec/message_decoder.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/headers/incoming.py" afterPath="$PROJECT_DIR$/communication/headers/incoming.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/headers/outgoing.py" afterPath="$PROJECT_DIR$/communication/headers/outgoing.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/incoming/login/VersionCheckMessageEvent.py" afterPath="$PROJECT_DIR$/communication/incoming/login/VersionCheckMessageEvent.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/message_handler.py" afterPath="$PROJECT_DIR$/communication/message_handler.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/codec/message_encoder.py" afterPath="$PROJECT_DIR$/communication/codec/message_encoder.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/messages/request.py" afterPath="$PROJECT_DIR$/communication/messages/request.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/messages/response.py" afterPath="$PROJECT_DIR$/communication/messages/response.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/game.py" afterPath="$PROJECT_DIR$/game.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/network/connection.py" afterPath="$PROJECT_DIR$/network/connection.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/network/server.py" afterPath="$PROJECT_DIR$/network/server.py" />
     </list>
     <ignored path="server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -37,19 +26,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="session.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/session.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
-              <folding>
-                <element signature="e#83#94#0" expanded="true" />
-                <marker date="1466741413712" expanded="true" signature="406:433" placeholder="..." />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="VersionCheckMessageEvent.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/communication/incoming/login/VersionCheckMessageEvent.py">
           <provider selected="true" editor-type-id="text-editor">
@@ -86,7 +62,7 @@
         <entry file="file://$PROJECT_DIR$/communication/messages/request.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="20" column="66" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
+              <caret line="44" column="60" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
               <folding />
             </state>
           </provider>
@@ -114,11 +90,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="response.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="response.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/communication/messages/response.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38679245">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -128,7 +104,7 @@
         <entry file="file://$PROJECT_DIR$/communication/codec/message_decoder.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+              <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
               <folding>
                 <element signature="e#88#99#0" expanded="true" />
               </folding>
@@ -136,11 +112,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="message_encoder.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/communication/codec/message_encoder.py">
+      <file leaf-file-name="outgoing.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/communication/headers/outgoing.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
+              <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="message_encoder.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/communication/codec/message_encoder.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.032258064">
+              <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
               <folding />
             </state>
           </provider>
@@ -189,13 +175,13 @@
         <option value="$PROJECT_DIR$/communication/headers/outgoing.py" />
         <option value="$PROJECT_DIR$/communication/headers/incoming.py" />
         <option value="$PROJECT_DIR$/client/details.py" />
-        <option value="$PROJECT_DIR$/communication/codec/message_decoder.py" />
         <option value="$PROJECT_DIR$/client/session.py" />
-        <option value="$PROJECT_DIR$/communication/codec/message_encoder.py" />
-        <option value="$PROJECT_DIR$/communication/messages/request.py" />
         <option value="$PROJECT_DIR$/communication/message_handler.py" />
         <option value="$PROJECT_DIR$/communication/incoming/login/VersionCheckMessageEvent.py" />
         <option value="$PROJECT_DIR$/communication/messages/response.py" />
+        <option value="$PROJECT_DIR$/communication/messages/request.py" />
+        <option value="$PROJECT_DIR$/communication/codec/message_decoder.py" />
+        <option value="$PROJECT_DIR$/communication/codec/message_encoder.py" />
       </list>
     </option>
   </component>
@@ -639,7 +625,7 @@
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18250951" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.41298702" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15844156" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1022,14 +1008,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/communication/headers/outgoing.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/client/details.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1075,32 +1053,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/communication/codec/message_encoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="45" selection-start-line="12" selection-start-column="45" selection-end-line="12" selection-end-column="45" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/communication/codec/message_decoder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-          <folding>
-            <element signature="e#88#99#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/communication/messages/request.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="66" selection-start-line="20" selection-start-column="66" selection-end-line="20" selection-end-column="66" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/communication/message_handler.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1129,8 +1081,42 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/communication/messages/response.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38679245">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="66" column="33" selection-start-line="66" selection-start-column="33" selection-end-line="66" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/communication/messages/request.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="44" column="60" selection-start-line="44" selection-start-column="60" selection-end-line="44" selection-end-column="60" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/communication/headers/outgoing.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/communication/codec/message_decoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="25" column="8" selection-start-line="25" selection-start-column="8" selection-end-line="25" selection-end-column="8" />
+          <folding>
+            <element signature="e#88#99#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/communication/codec/message_encoder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.032258064">
+          <caret line="1" column="42" selection-start-line="1" selection-start-column="42" selection-end-line="1" selection-end-column="42" />
           <folding />
         </state>
       </provider>
