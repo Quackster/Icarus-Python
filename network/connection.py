@@ -1,6 +1,7 @@
 import asyncore
+import communication.codec.message_decoder as message_decoder
+
 from client.session import *
-import communication.message_handler as message_handler
 
 
 class Connection(asyncore.dispatcher_with_send):
@@ -13,8 +14,6 @@ class Connection(asyncore.dispatcher_with_send):
         session = Session(self)
         game.connections.append(session)
 
-        print("Number of connections: " + str(len(game.connections)))
-
     def handle_read(self):
         """
         Override asyncore reading with incoming data
@@ -24,6 +23,6 @@ class Connection(asyncore.dispatcher_with_send):
         session = game.async_server.find_session_by_socket(self)
 
         if data:
-            message_handler.parse(session, data)
+            message_decoder.parse(session, data)
         else:
             session.close()

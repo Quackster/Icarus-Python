@@ -33,8 +33,7 @@ class Server(asyncore.dispatcher):
 
         if pair is not None:
             sock, addr = pair
-            print ('Incoming connection from %s' % repr(addr))
-
+            #print ('Incoming connection from %s' % repr(addr))
             #session = Session(sock)
             handler = Connection(sock)
             handler.new_session()

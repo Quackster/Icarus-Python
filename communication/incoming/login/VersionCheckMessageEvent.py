@@ -1,5 +1,5 @@
 import util.logging as log
-
+from communication.messages.response import *
 
 class VersionCheckMessageEvent:
     def handle(self, session, message):
@@ -9,4 +9,4 @@ class VersionCheckMessageEvent:
         :param message: the incoming message with login details
         """
 
-        log.info("Version check, swf revision: " + message.read_string())
+        log.session("Version check, swf revision: " + message.read_string())

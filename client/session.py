@@ -9,6 +9,9 @@ class Session:
         self.details = Details()
 
     def send(self, data):
+        self.socket.send(data.get_buffer())
+
+    def send_str(self, data):
         self.socket.send(data.encode())
 
     def close(self):

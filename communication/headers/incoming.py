@@ -1,3 +1,3 @@
 VersionCheckMessageEvent = 4000;
 UniqueIDMessageEvent = 3659;
-SSOTicketMessageEvent = 1490;
+AuthenticateMessageEvent = 1490;

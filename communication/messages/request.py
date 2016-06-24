@@ -6,7 +6,8 @@ Author: TheAmazingAussie/Alex
 
 import struct
 
-class ByteStream:
+
+class Request:
     def __init__(self, stream):
         self.stream = stream
         self.index = 0

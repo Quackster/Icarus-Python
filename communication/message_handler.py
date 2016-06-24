@@ -1,28 +1,23 @@
-from util.bytestream import *
-import util.logging as log
-import game
+import communication.headers.incoming as incoming
+from communication.incoming.login.VersionCheckMessageEvent import *
+from communication.incoming.login.AuthenticateMessageEvent import *
 
+class MessageHandler:
 
-def parse(session, response):
-    """
-    Parse incoming data from client
-    :param session: the session who is currently connected
-    :param incoming_message: the message to parse
-    :return:
-    """
+    def __init__(self):
+        self.packets = {
+            incoming.VersionCheckMessageEvent: VersionCheckMessageEvent(),
+            incoming.AuthenticateMessageEvent: AuthenticateMessageEvent()
+        }
 
-    if response[0] == 60:
-        session.send("<?xml version=\"1.0\"?>\r\n"
-                        + "<!DOCTYPE cross-domain-policy SYSTEM \"/xml/dtds/cross-domain-policy.dtd\">\r\n"
-                        + "<cross-domain-policy>\r\n"
-                        + "<allow-access-from domain=\"*\" to-ports=\"*\" />\r\n"
-                        + "</cross-domain-policy>\0")
-    else:
-
-        stream = ByteStream(response)
-        message_length = stream.read_int()
-        message_header = stream.read_short()
-
-        print ("Received: " +  str(message_header) + " / " + response.decode("ISO-8859-1")[4:])
-
-        game.messages.incoming_message(session, message_header, stream)
+    def incoming_message(self, connection, message_header, message):
+        """
+        Locate the incoming message and handle it
+        :param connection: the session connected
+        :param header: the class name requested
+        :param message: the rest of the message
+        :return:
+        """
+        for header, instance in self.packets.items():
+            if header == message_header:
+                instance.handle(connection, message)
