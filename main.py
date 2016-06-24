@@ -1,3 +1,8 @@
+"""
+Main file to call program
+Author: Alex (TheAmazingAussie)
+"""
+
 import network.server as server
 from communication.message_handler import *
 

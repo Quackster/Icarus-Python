@@ -1,4 +1,10 @@
+"""
+Session which contains socket and details
+Author: Alex (TheAmazingAussie)
+"""
+
 import game
+import communication.codec.message_encoder as message_encoder
 from client.details import *
 
 
@@ -9,10 +15,10 @@ class Session:
         self.details = Details()
 
     def send(self, data):
-        self.socket.send(data.get_buffer())
+        self.socket.send(message_encoder.encode(data))
 
-    def send_str(self, data):
-        self.socket.send(data.encode())
+    def get_socket(self):
+        return self.socket
 
     def close(self):
         """

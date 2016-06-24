@@ -1,3 +1,9 @@
+"""
+Server using asyncore
+Author: Alex (TheAmazingAussie)
+"""
+
+
 import asyncore
 import socket
 import threading
@@ -6,8 +12,8 @@ import game
 from network.connection import *
 from client.session import *
 
-class Server(asyncore.dispatcher):
 
+class Server(asyncore.dispatcher):
     def __init__(self, host, port):
         """
         Create asyncore socket with defined host and port
@@ -28,16 +34,13 @@ class Server(asyncore.dispatcher):
         """
         Override accept handling
         """
-
         pair = self.accept()
 
         if pair is not None:
             sock, addr = pair
             #print ('Incoming connection from %s' % repr(addr))
-            #session = Session(sock)
             handler = Connection(sock)
             handler.new_session()
-            #variables.connections.append(Session(sock))
 
     def find_session_by_socket(self, socket):
         """
@@ -49,4 +52,3 @@ class Server(asyncore.dispatcher):
             if id(session.socket) == id(socket):
                 return session
 
-        return None

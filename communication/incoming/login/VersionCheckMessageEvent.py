@@ -1,6 +1,7 @@
 import util.logging as log
 from communication.messages.response import *
 
+
 class VersionCheckMessageEvent:
     def handle(self, session, message):
         """

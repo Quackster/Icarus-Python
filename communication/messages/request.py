@@ -24,6 +24,9 @@ class Request:
 
     def read_string(self):
         str_length = self.read_short()
-        str = self.stream.decode("ISO-8859-1")[self.index:self.index + str_length]
+        str = self.get()[self.index:self.index + str_length]
         self.index += str_length
         return str
+
+    def get(self):
+        return self.stream.decode("ISO-8859-1")

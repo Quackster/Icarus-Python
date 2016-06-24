@@ -1,4 +1,11 @@
+"""
+Message handler
+Author: Alex (TheAmazingAussie)
+"""
+
+import util.logging as log
 import communication.headers.incoming as incoming
+
 from communication.incoming.login.VersionCheckMessageEvent import *
 from communication.incoming.login.AuthenticateMessageEvent import *
 
@@ -14,10 +21,13 @@ class MessageHandler:
         """
         Locate the incoming message and handle it
         :param connection: the session connected
-        :param header: the class name requested
+        :param message_header: the class name requested
         :param message: the rest of the message
         :return:
         """
-        for header, instance in self.packets.items():
-            if header == message_header:
-                instance.handle(connection, message)
+
+        if message_header in self.packets:
+            log.session("[MESSAGE] Handled message (" + str(incoming.__class__.__name__) + ") with header " + str(message_header))
+            self.packets[message_header].handle(connection, message)
+        else:
+            log.session("[MESSAGE] Unhandled message header " + str(message_header) + " / " + message.get())

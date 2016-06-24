@@ -1,3 +1,8 @@
+"""
+Outgoing header list
+Author: Alex (TheAmazingAussie)
+"""
+
 AcceptUserInsideRoomMessageComposer = 875
 ActivityPointsMessageComposer = 1369
 AuthenticationOKMessageComposer = 1552

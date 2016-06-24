@@ -1,3 +1,8 @@
+"""
+Connection handler
+Author: Alex (TheAmazingAussie)
+"""
+
 import asyncore
 import communication.codec.message_decoder as message_decoder
 

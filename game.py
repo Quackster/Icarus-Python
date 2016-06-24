@@ -1,3 +1,8 @@
+"""
+Class to store connections
+Author: Alex (TheAmazingAussie)
+"""
+
 # Arrays
 connections = []
 
