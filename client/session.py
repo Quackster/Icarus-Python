@@ -24,6 +24,6 @@ class Session:
         """
         Force lose socket on demand
         """
-        game.server.connections.remove(self)
+        game.get_connections().remove(self)
         self.socket.close()
 

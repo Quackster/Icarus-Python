@@ -17,7 +17,7 @@ class Connection(asyncore.dispatcher_with_send):
         """
 
         session = Session(self)
-        game.server.connections.append(session)
+        game.get_connections().append(session)
 
     def handle_read(self):
         """

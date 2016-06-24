@@ -10,7 +10,6 @@ import game
 import socket
 import threading
 from network.connection import *
-from client.session import *
 
 
 class Server(asyncore.dispatcher):
@@ -28,8 +27,6 @@ class Server(asyncore.dispatcher):
 
         loop_thread = threading.Thread(target=asyncore.loop, name="Asyncore Loop")
         loop_thread.start()
-
-        self.connections = []
 
     def handle_accept(self):
         """
@@ -49,7 +46,7 @@ class Server(asyncore.dispatcher):
         :param socket: Asyncore socket
         """
 
-        for session in self.connections:
+        for session in game.get_connections():
             if id(session.socket) == id(sck):
                 return session
 
