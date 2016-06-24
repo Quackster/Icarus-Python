@@ -5,7 +5,7 @@ Author: Alex (TheAmazingAussie)
 
 import asyncore
 import communication.codec.message_decoder as message_decoder
-
+import game
 from client.session import *
 
 
@@ -17,7 +17,7 @@ class Connection(asyncore.dispatcher_with_send):
         """
 
         session = Session(self)
-        game.connections.append(session)
+        game.server.connections.append(session)
 
     def handle_read(self):
         """
@@ -25,7 +25,7 @@ class Connection(asyncore.dispatcher_with_send):
         """
 
         data = self.recv(1024)
-        session = game.async_server.find_session_by_socket(self)
+        session = game.server.find_session_by_socket(self)
 
         if data:
             message_decoder.parse(session, data)

@@ -1,5 +1,9 @@
+"""
+Check release of SWF version
+Author: Alex (TheAmazingAussie)
+"""
+
 import util.logging as log
-from communication.messages.response import *
 
 
 class VersionCheckMessageEvent:
@@ -10,4 +14,5 @@ class VersionCheckMessageEvent:
         :param message: the incoming message with login details
         """
 
-        log.session("Version check, swf revision: " + message.read_string())
+        swf_revision = message.read_string()
+        log.session("Version check, swf revision: " + swf_revision)

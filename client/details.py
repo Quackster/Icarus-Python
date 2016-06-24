@@ -3,6 +3,7 @@ Session (user) details
 Author: Alex (TheAmazingAussie)
 """
 
+
 class Details:
 
     def __init__(self):

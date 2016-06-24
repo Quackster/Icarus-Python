@@ -1,3 +1,8 @@
+"""
+Authenticate user class using received SSO ticket
+Author: Alex (TheAmazingAussie)
+"""
+
 import util.logging as log
 import communication.headers.outgoing as outgoing
 from communication.messages.response import *

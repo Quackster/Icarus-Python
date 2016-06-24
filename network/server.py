@@ -3,12 +3,12 @@ Server using asyncore
 Author: Alex (TheAmazingAussie)
 """
 
-
+# noinspection PyUnresolvedReferences
 import asyncore
+# noinspection PyUnresolvedReferences
+import game
 import socket
 import threading
-import game
-
 from network.connection import *
 from client.session import *
 
@@ -20,7 +20,6 @@ class Server(asyncore.dispatcher):
         :param host: the host/ip address to listen on, '' for all potential IP addresses
         :param port: the port the socket should listen on
         """
-
         asyncore.dispatcher.__init__(self)
         self.create_socket(socket.AF_INET, socket.SOCK_STREAM)
         #self.set_reuse_addr()
@@ -29,6 +28,8 @@ class Server(asyncore.dispatcher):
 
         loop_thread = threading.Thread(target=asyncore.loop, name="Asyncore Loop")
         loop_thread.start()
+
+        self.connections = []
 
     def handle_accept(self):
         """
@@ -42,13 +43,13 @@ class Server(asyncore.dispatcher):
             handler = Connection(sock)
             handler.new_session()
 
-    def find_session_by_socket(self, socket):
+    def find_session_by_socket(self, sck):
         """
         Find session by connected socket instance
         :param socket: Asyncore socket
         """
 
-        for session in game.connections:
-            if id(session.socket) == id(socket):
+        for session in self.connections:
+            if id(session.socket) == id(sck):
                 return session
 

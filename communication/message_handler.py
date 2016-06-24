@@ -3,11 +3,13 @@ Message handler
 Author: Alex (TheAmazingAussie)
 """
 
+# noinspection PyUnresolvedReferences
 import util.logging as log
 import communication.headers.incoming as incoming
 
 from communication.incoming.login.VersionCheckMessageEvent import *
 from communication.incoming.login.AuthenticateMessageEvent import *
+
 
 class MessageHandler:
 

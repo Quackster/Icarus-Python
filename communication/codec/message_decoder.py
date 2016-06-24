@@ -16,10 +16,10 @@ def parse(session, response):
 
     if response[0] == 60:
         session.send("<?xml version=\"1.0\"?>\r\n"
-                        + "<!DOCTYPE cross-domain-policy SYSTEM \"/xml/dtds/cross-domain-policy.dtd\">\r\n"
-                        + "<cross-domain-policy>\r\n"
-                        + "<allow-access-from domain=\"*\" to-ports=\"*\" />\r\n"
-                        + "</cross-domain-policy>\0")
+                     + "<!DOCTYPE cross-domain-policy SYSTEM \"/xml/dtds/cross-domain-policy.dtd\">\r\n"
+                     + "<cross-domain-policy>\r\n"
+                     + "<allow-access-from domain=\"*\" to-ports=\"*\" />\r\n"
+                     + "</cross-domain-policy>\0")
     else:
 
         stream = Request(response)
