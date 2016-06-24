@@ -1,4 +1,5 @@
 import util.logging as log
+import communication.headers.outgoing as outgoing
 from communication.messages.response import *
 
 
@@ -12,6 +13,15 @@ class AuthenticateMessageEvent:
 
         log.session("SSO ticket: " + message.read_string())
 
-        response = Response(1552)
+        response = Response(outgoing.AuthenticationOKMessageComposer)
         session.send(response)
-        log.write_to_file("test", response.get_buffer().decode("ascii"))
+
+        response = Response(outgoing.HomeRoomMessageComposer)
+        response.write_int(0)
+        response.write_int(0)
+        session.send(response)
+
+        response = Response(outgoing.LandingWidgetMessageComposer)
+        response.write_string("")
+        response.write_string("")
+        session.send(response)
