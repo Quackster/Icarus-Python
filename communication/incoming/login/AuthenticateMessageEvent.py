@@ -5,6 +5,7 @@ Author: Alex (TheAmazingAussie)
 
 import util.logging as log
 import communication.headers.outgoing as outgoing
+import database.dao as dao
 from communication.messages.response import *
 
 
@@ -15,8 +16,14 @@ class AuthenticateMessageEvent:
         :param session: the session who requests AuthenticateMessageEvent handler
         :param message: the incoming message with login details
         """
+        sso_ticket = message.read_string()
 
-        log.session("SSO ticket: " + message.read_string())
+        log.session("SSO ticket: " + sso_ticket)
+
+        if not dao.get_user_dao().authenticate(session, sso_ticket):
+            print ("Invalid sso ticket, kicking user")
+            session.close()
+            return
 
         response = Response(outgoing.AuthenticationOKMessageComposer)
         session.send(response)
