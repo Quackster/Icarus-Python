@@ -20,7 +20,7 @@ class AuthenticateMessageEvent:
 
         log.session("SSO ticket: " + sso_ticket)
 
-        if not dao.get_user_dao().authenticate(session, sso_ticket):
+        if not dao.user.authenticate(session, sso_ticket):
             print ("Invalid sso ticket, kicking user")
             session.close()
             return

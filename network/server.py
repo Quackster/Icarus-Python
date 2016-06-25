@@ -46,7 +46,7 @@ class Server(asyncore.dispatcher):
         :param socket: Asyncore socket
         """
 
-        for session in game.get_connections():
+        for session in game.connections:
             if id(session.socket) == id(sck):
                 return session
 

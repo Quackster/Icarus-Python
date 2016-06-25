@@ -24,7 +24,7 @@ log.info("Testing MySQL connnection")
 db_error = False
 
 try:
-    db_connection().create_connection()
+    DatabaseConnection().create_connection()
 except Exception as e:
     db_error = True
     log.error("Could not connect to database")

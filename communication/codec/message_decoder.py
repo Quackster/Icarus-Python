@@ -26,4 +26,4 @@ def parse(session, response):
         message_length = stream.read_int()
         message_header = stream.read_short()
 
-        game.get_message_handler().incoming_message(session, message_header, stream)
+        game.message_handler.incoming_message(session, message_header, stream)
