@@ -3,7 +3,7 @@ Session which contains socket and details
 Author: Alex (TheAmazingAussie)
 """
 
-import game
+import icarus
 import communication.codec.message_encoder as message_encoder
 from client.details import *
 
@@ -17,13 +17,10 @@ class Session:
     def send(self, data):
         self.socket.send(message_encoder.encode(data))
 
-    def get_socket(self):
-        return self.socket
-
     def close(self):
         """
         Force lose socket on demand
         """
-        game.connections.remove(self)
+        icarus.connections.remove(self)
         self.socket.close()
 

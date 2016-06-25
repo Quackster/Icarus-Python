@@ -4,11 +4,12 @@ Author: Alex (TheAmazingAussie)
 """
 
 # noinspection PyUnresolvedReferences
-import util.logging as log
-import communication.headers.incoming as incoming
+from communication.messages.incoming.login.VersionCheckMessageEvent import *
+from communication.messages.incoming.login.AuthenticateMessageEvent import *
+from communication.messages.incoming.login.UniqueIDMessageEvent import *
 
-from communication.incoming.login.VersionCheckMessageEvent import *
-from communication.incoming.login.AuthenticateMessageEvent import *
+import communication.headers.incoming as incoming
+import util.logging as log
 
 
 class MessageHandler:
@@ -16,7 +17,8 @@ class MessageHandler:
     def __init__(self):
         self.packets = {
             incoming.VersionCheckMessageEvent: VersionCheckMessageEvent(),
-            incoming.AuthenticateMessageEvent: AuthenticateMessageEvent()
+            incoming.AuthenticateMessageEvent: AuthenticateMessageEvent(),
+            incoming.UniqueIDMessageEvent: UniqueIDMessageEvent()
         }
 
     def incoming_message(self, connection, message_header, message):
@@ -29,7 +31,7 @@ class MessageHandler:
         """
 
         if message_header in self.packets:
-            log.session("[MESSAGE] Handled message (" + str(incoming.__class__.__name__) + ") with header " + str(message_header))
+            log.session("[MESSAGE] Handled message with header " + str(message_header) + " / " + message.get())
             self.packets[message_header].handle(connection, message)
         else:
             log.session("[MESSAGE] Unhandled message header " + str(message_header) + " / " + message.get())

@@ -6,6 +6,7 @@ class UserDao:
         """
         Verifies if a connecting client has a valid SSO ticket when logging into the server
         :param sso_ticket: the ticket which logs in the dao from the client
+        :param session: the session connected with the sso ticket
         :return: Boolean if dao is successfully validated
         """
         db_con = self.database_connection.create_connection()

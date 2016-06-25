@@ -6,7 +6,7 @@ Author: Alex (TheAmazingAussie)
 # noinspection PyUnresolvedReferences
 import asyncore
 # noinspection PyUnresolvedReferences
-import game
+import icarus
 import socket
 import threading
 from network.connection import *
@@ -46,7 +46,7 @@ class Server(asyncore.dispatcher):
         :param socket: Asyncore socket
         """
 
-        for session in game.connections:
+        for session in icarus.connections:
             if id(session.socket) == id(sck):
                 return session
 

@@ -45,4 +45,7 @@ class Request:
         Get received packet as string in ISO-8859-1 encoding
         :return: packet as string
         """
-        return self.stream.decode("ISO-8859-1")
+        str_message = self.stream.decode("ISO-8859-1")
+        str_msg = "" + str_message
+        return str_msg
+

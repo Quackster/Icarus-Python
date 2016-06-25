@@ -3,7 +3,7 @@ Class for encoding messages which are sent
 Author: Alex (TheAmazingAussie)
 """
 
-from communication.messages.response import Response
+from communication.data_handlers.response import Response
 
 
 def encode(response):
@@ -15,6 +15,7 @@ def encode(response):
 
     if type(response) is str:
         return response.encode()
-
-    if type(response) is Response:
+    elif type(response) is Response:
         return response.get_buffer()
+    else:
+        return response.response.get_buffer()

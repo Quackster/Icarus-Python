@@ -5,7 +5,7 @@ Author: Alex (TheAmazingAussie)
 
 import util.logging as log
 import network.server as server
-import game
+import icarus
 
 from database.database_connect import *
 from network.server import *
@@ -37,7 +37,7 @@ if not db_error:
 
 log.info()
 log.info("Loading game instance")
-game.message_handler = MessageHandler()
+icarus.message_handler = MessageHandler()
 
 log.info()
 log.info("Starting network")
@@ -46,7 +46,7 @@ port = 3242;
 ip = "localhost"
 
 try:
-    game.server = Server(ip, port)
+    icarus.server = Server(ip, port)
     log.info("Listening on port " + str(port))
 except Exception as e:
     log.error("Could not bind to port: " + str(e))
