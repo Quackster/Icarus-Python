@@ -29,13 +29,13 @@ class Connection(asyncore.dispatcher_with_send):
         Override asyncore reading with incoming data
         """
 
-        try:
-            data = self.recv(1024)
-            session = game.session_manager.find_by_socket(self)
+        #try:
+        data = self.recv(1024)
+        session = game.session_manager.find_by_socket(self)
 
-            if data:
-                message_decoder.parse(session, data)
-            else:
-                session.close()
-        except Exception as e:
-            log.error("Error caught (connection.py): " + str(e))
+        if data:
+            message_decoder.parse(session, data)
+        else:
+            session.close()
+        #except Exception as e:
+        #    log.error("Error caught (connection.py): " + str(e))

@@ -12,6 +12,9 @@ from communication.messages.incoming.login.UniqueIDMessageEvent import *
 from communication.messages.incoming.user.CurrencyBalanceMessageEvent import *
 from communication.messages.incoming.user.InfoRetrieveMessageEvent import *
 
+from communication.messages.incoming.navigator.NewNavigatorMessageEvent import *
+from communication.messages.incoming.navigator.SearchNewNavigatorEvent import *
+
 import communication.headers.incoming as incoming
 import util.logging as log
 import sys, os
@@ -26,7 +29,11 @@ class MessageHandler:
 
             # User
             incoming.GetCurrencyBalanceMessageEvent: CurrencyBalanceMessageEvent(),
-            incoming.InfoRetrieveMessageEvent: InfoRetrieveMessageEvent()
+            incoming.InfoRetrieveMessageEvent: InfoRetrieveMessageEvent(),
+
+            # Navigator
+            incoming.NewNavigatorMessageEvent: NewNavigatorMessageEvent(),
+            incoming.SearchNewNavigatorEvent: SearchNewNavigatorMessageEvent()
         }
 
     def incoming_message(self, connection, message_header, message):
@@ -38,14 +45,14 @@ class MessageHandler:
         :return:
         """
 
-        try:
-            if message_header in self.packets:
-                log.session("[MESSAGE] Handled message with header " + str(message_header) + " / " + message.get_message_as_string())
-                self.packets[message_header].handle(connection, message)
-            else:
-                log.session("[MESSAGE] Unhandled message header " + str(message_header) + " / " + message.get_message_as_string())
-        except Exception as e:
-            exc_type, exc_obj, exc_tb = sys.exc_info()
-            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
-            log.error("Error caught (" + fname  + " / " + str(exc_tb.tb_lineno) + ")")
-            log.error("    - " + str(e))
+        #try:
+        if message_header in self.packets:
+            log.session("[MESSAGE] Handled message with header " + str(message_header) + " / " + message.get_message_as_string())
+            self.packets[message_header].handle(connection, message)
+        else:
+            log.session("[MESSAGE] Unhandled message header " + str(message_header) + " / " + message.get_message_as_string())
+        #except Exception as e:
+        #    exc_type, exc_obj, exc_tb = sys.exc_info()
+        #    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+        #    log.error("Error caught (" + fname  + " / " + str(exc_tb.tb_lineno) + ")")
+        #    log.error("    - " + str(e))

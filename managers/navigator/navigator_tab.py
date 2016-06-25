@@ -11,7 +11,7 @@ class NavigatorTab:
         self.child_id = 0
         self.tab_name = ""
         self.title = ""
-        self.button_type = ""
+        self.button_type = 0
         self.closed = False
         self.thumbnail = False
         self.populator = None
