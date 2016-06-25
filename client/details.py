@@ -14,6 +14,15 @@ class Details:
         self.rank = 1;
         self.credits = 0;
         self.machine_id = ""
+        self.authenticated = False
+
+    def fill_details(self, id, username, motto, figure, rank, credits):
+        self.id = id
+        self.username = username
+        self.motto = motto
+        self.figure = figure
+        self.rank = rank
+        self.credits = credits
 
     def get_user_object(self):
         return ""

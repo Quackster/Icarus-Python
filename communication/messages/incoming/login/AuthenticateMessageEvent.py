@@ -6,7 +6,6 @@ Author: Alex (TheAmazingAussie)
 import database.database_access as dao
 import util.logging as log
 
-#Packets
 from communication.messages.outgoing.login.UniqueMachineIDMessageComposer import *
 from communication.messages.outgoing.login.AuthenticationOKMessageComposer import *
 from communication.messages.outgoing.login.HomeRoomMessageComposer import *
@@ -25,7 +24,6 @@ class AuthenticateMessageEvent:
         log.session("SSO ticket: " + sso_ticket)
 
         if not dao.user.authenticate(session, sso_ticket):
-            print ("Invalid sso ticket, kicking dao")
             session.close()
             return
 

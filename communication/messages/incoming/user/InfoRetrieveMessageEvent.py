@@ -1,0 +1,19 @@
+"""
+Check release of SWF version
+Author: Alex (TheAmazingAussie)
+"""
+
+from communication.messages.outgoing.user.SendPerkAllowancesMessageComposer import SendPerkAllowancesMessageComposer
+from communication.messages.outgoing.user.UserObjectMessageComposer import UserObjectMessageComposer
+
+
+class InfoRetrieveMessageEvent:
+    def handle(self, session, message):
+        """
+        Send user info
+        :param session: the session who requests InfoRetrieveMessageEvent handler
+        :param message: the incoming message
+        """
+
+        session.send(SendPerkAllowancesMessageComposer())
+        session.send(UserObjectMessageComposer(session.details))

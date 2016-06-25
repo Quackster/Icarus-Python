@@ -11,9 +11,17 @@ class UserDao:
         """
         db_con = self.database_connection.create_connection()
         db_cur = db_con.cursor()
-        db_cur.execute("SELECT id, username, rank, sso_ticket, motto, figure, credits FROM users WHERE sso_ticket = %s LIMIT 1", (sso_ticket))
+        db_cur.execute("SELECT id, username, rank, motto, figure, credits FROM users WHERE sso_ticket = %s LIMIT 1", (sso_ticket))
 
         has_row = db_cur.rowcount > 0
+
+        for row in db_cur:
+            session.details.id = row[0]
+            session.details.username = row[1]
+            session.details.rank = row[2]
+            session.details.motto = row[3]
+            session.details.figure = row[4]
+            session.details.credits = 5000
 
         db_con.close()
         db_cur.close()
