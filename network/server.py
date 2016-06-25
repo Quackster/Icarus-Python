@@ -6,7 +6,7 @@ Author: Alex (TheAmazingAussie)
 # noinspection PyUnresolvedReferences
 import asyncore
 # noinspection PyUnresolvedReferences
-import icarus
+import game
 import socket
 import threading
 from network.connection import *
@@ -39,14 +39,4 @@ class Server(asyncore.dispatcher):
             #print ('Incoming connection from %s' % repr(addr))
             handler = Connection(sock)
             handler.new_session()
-
-    def find_session_by_socket(self, sck):
-        """
-        Find session by connected socket instance
-        :param socket: Asyncore socket
-        """
-
-        for session in icarus.connections:
-            if id(session.socket) == id(sck):
-                return session
 

@@ -1,5 +1,5 @@
 import communication.headers.outgoing as outgoing
-from communication.data_handlers.response import Response
+from communication.data_streams.response import Response
 
 
 class SendPerkAllowancesMessageComposer:

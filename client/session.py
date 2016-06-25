@@ -3,7 +3,7 @@ Session which contains socket and details
 Author: Alex (TheAmazingAussie)
 """
 
-import icarus
+import game
 import communication.codec.message_encoder as message_encoder
 from client.details import *
 
@@ -21,6 +21,6 @@ class Session:
         """
         Force lose socket on demand
         """
-        icarus.connections.remove(self)
+        game.session_manager.connections.remove(self)
         self.socket.close()
 

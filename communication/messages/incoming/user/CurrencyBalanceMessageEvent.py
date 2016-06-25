@@ -10,7 +10,7 @@ class CurrencyBalanceMessageEvent:
     def handle(self, session, message):
         """
         Send current currency balance
-        :param session: the session who requests CurrencyBalanceMessageEvent handler
+        :param session: the clients who requests CurrencyBalanceMessageEvent handler
         :param message: the incoming message with login details
         """
 

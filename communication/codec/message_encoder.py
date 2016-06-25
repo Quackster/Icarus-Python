@@ -3,13 +3,13 @@ Class for encoding messages which are sent
 Author: Alex (TheAmazingAussie)
 """
 
-from communication.data_handlers.response import Response
+from communication.data_streams.response import Response
 
 
 def encode(response):
     """
     Parse incoming data from client
-    :param session: the session who is currently connected
+    :param clients: the clients who is currently connected
     :param response: the message to parse
     """
 

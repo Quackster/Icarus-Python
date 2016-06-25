@@ -11,7 +11,7 @@ class InfoRetrieveMessageEvent:
     def handle(self, session, message):
         """
         Send user info
-        :param session: the session who requests InfoRetrieveMessageEvent handler
+        :param session: the clients who requests InfoRetrieveMessageEvent handler
         :param message: the incoming message
         """
 

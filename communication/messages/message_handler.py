@@ -31,7 +31,7 @@ class MessageHandler:
     def incoming_message(self, connection, message_header, message):
         """
         Locate the incoming message and handle it
-        :param connection: the session connected
+        :param connection: the clients connected
         :param message_header: the class name requested
         :param message: the rest of the message
         :return:

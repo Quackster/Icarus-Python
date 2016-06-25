@@ -2,14 +2,10 @@
 Main file to call program
 Author: Alex (TheAmazingAussie)
 """
-
+import game
 import util.logging as log
-import network.server as server
-import icarus
-
-from database.database_connect import *
-from network.server import *
-from communication.message_handler import *
+from database.database_connect import DatabaseConnection
+from network.server import Server
 
 # Main program below this line
 log.line("###############")
@@ -37,7 +33,7 @@ if not db_error:
 
 log.info()
 log.info("Loading game instance")
-icarus.message_handler = MessageHandler()
+game.init_game()
 
 log.info()
 log.info("Starting network")
@@ -46,7 +42,7 @@ port = 3242;
 ip = "localhost"
 
 try:
-    icarus.server = Server(ip, port)
+    game.server = Server(ip, port)
     log.info("Listening on port " + str(port))
 except Exception as e:
     log.error("Could not bind to port: " + str(e))

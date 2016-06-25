@@ -3,14 +3,14 @@ Class for decoding messages which are received
 Author: Alex (TheAmazingAussie)
 """
 
-import icarus
-from communication.data_handlers.request import *
+import game
+from communication.data_streams.request import *
 
 
 def parse(session, response):
     """
     Parse incoming data from client
-    :param session: the session who is currently connected
+    :param session: the clients who is currently connected
     :param response: the message to parse
     """
 
@@ -26,4 +26,4 @@ def parse(session, response):
         message_length = stream.read_int()
         message_header = stream.read_short()
 
-        icarus.message_handler.incoming_message(session, message_header, stream)
+        game.message_handler.incoming_message(session, message_header, stream)

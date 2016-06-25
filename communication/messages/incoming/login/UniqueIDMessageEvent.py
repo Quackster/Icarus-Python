@@ -8,7 +8,7 @@ class UniqueIDMessageEvent:
     def handle(self, session, message):
         """
         Handle sso request
-        :param session: the session who requests AuthenticateMessageEvent handler
+        :param session: the clients who requests AuthenticateMessageEvent handler
         :param message: the incoming message with login details
         """
         message.read_string()

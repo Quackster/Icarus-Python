@@ -5,7 +5,7 @@ Author: Alex (TheAmazingAussie)
 
 import asyncore
 import communication.codec.message_decoder as message_decoder
-import icarus
+import game
 from client.session import *
 
 
@@ -13,11 +13,11 @@ class Connection(asyncore.dispatcher_with_send):
 
     def new_session(self):
         """
-        Add new session to the list of connected sessions
+        Add new clients to the list of connected sessions
         """
 
         session = Session(self)
-        icarus.connections.append(session)
+        game.session_manager.connections.append(session)
 
     def handle_read(self):
         """
@@ -25,7 +25,7 @@ class Connection(asyncore.dispatcher_with_send):
         """
 
         data = self.recv(1024)
-        session = icarus.server.find_session_by_socket(self)
+        session = game.session_manager.find_by_socket(self)
 
         if data:
             message_decoder.parse(session, data)
