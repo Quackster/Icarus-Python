@@ -7,7 +7,7 @@ import util.logging as log
 import network.server as server
 import game
 
-from database.dbconnect import *
+from database.database_connect import *
 from network.server import *
 from communication.message_handler import *
 

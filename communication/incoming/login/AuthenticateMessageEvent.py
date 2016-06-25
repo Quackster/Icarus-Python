@@ -5,7 +5,7 @@ Author: Alex (TheAmazingAussie)
 
 import util.logging as log
 import communication.headers.outgoing as outgoing
-import database.dao as dao
+import database.database_access as dao
 from communication.messages.response import *
 
 
@@ -21,7 +21,7 @@ class AuthenticateMessageEvent:
         log.session("SSO ticket: " + sso_ticket)
 
         if not dao.user.authenticate(session, sso_ticket):
-            print ("Invalid sso ticket, kicking user")
+            print ("Invalid sso ticket, kicking dao")
             session.close()
             return
 

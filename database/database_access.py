@@ -3,11 +3,11 @@ Data access object class
 author: TheAmazingAussie (Alex)
 """
 
-from database.dbconnect import DatabaseConnection
-from database.user.user_dao import *
+from database.database_connect import DatabaseConnection
+from database.dao.user_dao import UserDao
 
 # Database connection class
 __dbconnect = DatabaseConnection()
 
 # Data access objects
-user = user_dao(__dbconnect)
+user = UserDao(__dbconnect)
