@@ -16,12 +16,8 @@ class UserDao:
         has_row = db_cur.rowcount > 0
 
         for row in db_cur:
-            session.details.id = row[0]
-            session.details.username = row[1]
-            session.details.rank = row[2]
-            session.details.motto = row[3]
-            session.details.figure = row[4]
-            session.details.credits = 5000
+            #(self, id, username, motto, figure, rank, credits):
+            session.details.fill_details(row[0], row[1], row[3], row[4], row[2], row[5])
 
         db_con.close()
         db_cur.close()

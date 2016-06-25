@@ -4,9 +4,11 @@ Author: Alex (TheAmazingAussie)
 """
 
 import asyncore
+import util.logging as log
 import communication.codec.message_decoder as message_decoder
 import game
-from client.session import *
+
+from managers.clients.session import Session
 
 
 class Connection(asyncore.dispatcher_with_send):
@@ -16,18 +18,24 @@ class Connection(asyncore.dispatcher_with_send):
         Add new clients to the list of connected sessions
         """
 
-        session = Session(self)
-        game.session_manager.connections.append(session)
+        try:
+            session = Session(self)
+            game.session_manager.connections.append(session)
+        except Exception as e:
+            log.error("Error caught (connection.py): " + str(e))
 
     def handle_read(self):
         """
         Override asyncore reading with incoming data
         """
 
-        data = self.recv(1024)
-        session = game.session_manager.find_by_socket(self)
+        try:
+            data = self.recv(1024)
+            session = game.session_manager.find_by_socket(self)
 
-        if data:
-            message_decoder.parse(session, data)
-        else:
-            session.close()
+            if data:
+                message_decoder.parse(session, data)
+            else:
+                session.close()
+        except Exception as e:
+            log.error("Error caught (connection.py): " + str(e))

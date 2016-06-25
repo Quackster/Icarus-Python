@@ -8,7 +8,7 @@ class Details:
 
     def __init__(self):
         self.id = -1;
-        self.username = "Alex";
+        self.username = "";
         self.motto = "";
         self.figure = "";
         self.rank = 1;

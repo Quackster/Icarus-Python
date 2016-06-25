@@ -15,6 +15,7 @@ server = None
 message_handler = None
 session_manager = None
 
+
 def init_game():
     game.session_manager = SessionManager()
     game.message_handler = MessageHandler()

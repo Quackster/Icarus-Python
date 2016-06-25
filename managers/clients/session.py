@@ -3,9 +3,9 @@ Session which contains socket and details
 Author: Alex (TheAmazingAussie)
 """
 
-import game
 import communication.codec.message_encoder as message_encoder
-from client.details import *
+import game
+from managers.clients.session_details import *
 
 
 class Session:

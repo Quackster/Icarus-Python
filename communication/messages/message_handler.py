@@ -4,6 +4,7 @@ Author: Alex (TheAmazingAussie)
 """
 
 # noinspection PyUnresolvedReferences
+
 from communication.messages.incoming.login.VersionCheckMessageEvent import *
 from communication.messages.incoming.login.AuthenticateMessageEvent import *
 from communication.messages.incoming.login.UniqueIDMessageEvent import *
@@ -13,7 +14,7 @@ from communication.messages.incoming.user.InfoRetrieveMessageEvent import *
 
 import communication.headers.incoming as incoming
 import util.logging as log
-
+import sys, os
 
 class MessageHandler:
 
@@ -37,8 +38,14 @@ class MessageHandler:
         :return:
         """
 
-        if message_header in self.packets:
-            log.session("[MESSAGE] Handled message with header " + str(message_header) + " / " + message.get_message_as_string())
-            self.packets[message_header].handle(connection, message)
-        else:
-            log.session("[MESSAGE] Unhandled message header " + str(message_header) + " / " + message.get_message_as_string())
+        try:
+            if message_header in self.packets:
+                log.session("[MESSAGE] Handled message with header " + str(message_header) + " / " + message.get_message_as_string())
+                self.packets[message_header].handle(connection, message)
+            else:
+                log.session("[MESSAGE] Unhandled message header " + str(message_header) + " / " + message.get_message_as_string())
+        except Exception as e:
+            exc_type, exc_obj, exc_tb = sys.exc_info()
+            fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]
+            log.error("Error caught (" + fname  + " / " + str(exc_tb.tb_lineno) + ")")
+            log.error("    - " + str(e))
