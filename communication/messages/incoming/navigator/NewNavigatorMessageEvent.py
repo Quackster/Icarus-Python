@@ -7,6 +7,7 @@ from communication.messages.outgoing.navigator.FlatCategoriesMessageComposer imp
 from communication.messages.outgoing.navigator.NavigatorCategoriesComposer import NavigatorCategoriesComposer
 from communication.messages.outgoing.navigator.NavigatorMetaDataComposer import NavigatorMetaDataComposer
 
+
 class NewNavigatorMessageEvent:
     def handle(self, session, message):
         """

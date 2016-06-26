@@ -17,9 +17,8 @@ class NavigatorTab:
         self.populator = None
 
     def get_child_tabs(self):
-        tabs = []
-        for tab in game.navigator_manager.tabs:
-            if tab.child_id == self.id:
-                tabs.append(tab)
-
-        return tabs
+        """
+        Get all child tabs under this tab
+        :return: the list of tabs
+        """
+        return [tab for tab in game.navigator_manager.tabs if tab.child_id == self.id]

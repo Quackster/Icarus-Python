@@ -2,9 +2,11 @@
 Main file to call program
 Author: Alex (TheAmazingAussie)
 """
+
 import game
 import util.logging as log
 from database.database_connect import DatabaseConnection
+import database.database_access as dao
 from network.server import Server
 
 # Main program below this line

@@ -8,9 +8,12 @@ from database.database_connect import DatabaseConnection
 from database.dao.user_dao import UserDao
 from database.dao.navigator_dao import NavigatorDao
 
+"""
+:type user: UserDao
+:type navigator: NavigatorDao
+"""
 user = None
 navigator = None
-
 try:
     # Database connection class
     __dbconnect = DatabaseConnection()
