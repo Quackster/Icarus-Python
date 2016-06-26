@@ -20,7 +20,7 @@ class RoomDao:
 
         for row in db_cur:
             room = Room()
-            self.fill_room_data(room, row)
+            self.fill_data(room, row)
 
             if store_in_memory:
                 game.room_manager.add_room(room)
@@ -30,7 +30,13 @@ class RoomDao:
 
         return rooms
 
-    def fill_room_data(self, room, row):
+    def fill_data(self, room, row):
+        """
+        Fill instance with given row data
+        :param room: the data instance to fill
+        :param row: the row fected with MySQL
+        :return:
+        """
         room.data.id = row[0]
         room.data.name = row[1]
         room.data.type = row[2]

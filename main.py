@@ -10,9 +10,9 @@ import database.database_access as dao
 from network.server import Server
 
 # Main program below this line
-log.line("###############")
-log.line("##  pyHabbo  ##")
-log.line("###############")
+log.line("################")
+log.line("##   Icarus   ##")
+log.line("################")
 log.line()
 log.line("Written by Quackster/TheAmazingAussie")
 log.line()
