@@ -6,12 +6,13 @@ Author: Alex (TheAmazingAussie)
 import communication.codec.message_encoder as message_encoder
 import game
 from managers.clients.session_details import *
-
+from managers.clients.session_connection import *
 
 class Session:
 
     def __init__(self, socket):
         self.socket = socket
+        self.connection = SessionConnection(self)
         self.details = Details()
 
     def send(self, data):
