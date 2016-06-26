@@ -6,16 +6,21 @@ Author: Alex (TheAmazingAussie)
 from communication.data_streams.response import Response
 
 
-def encode(response):
+def encode(message):
     """
-    Parse incoming data from client
-    :param clients: the clients who is currently connected
-    :param response: the message to parse
+    Return outcoming data from client
+    :param response: the message to parse for client
     """
 
-    if type(response) is str:
-        return response.encode()
-    elif type(response) is Response:
-        return response.get_buffer()
+    # Convert string to bytes
+    if type(message) is str:
+        return message.encode()
+
+    # Build message in bytes for client from response class
+    elif type(message) is Response:
+        return message.get_buffer()
+
+    # Assume this is a composer class
+    # Build message in bytes for clients from composer
     else:
-        return response.response.get_buffer()
+        return message.response.get_buffer()
