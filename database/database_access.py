@@ -7,6 +7,7 @@ import util.logging as log
 from database.database_connect import DatabaseConnection
 from database.dao.user_dao import UserDao
 from database.dao.navigator_dao import NavigatorDao
+from database.dao.room_dao import RoomDao
 
 """
 :type user: UserDao
@@ -14,6 +15,8 @@ from database.dao.navigator_dao import NavigatorDao
 """
 user = None
 navigator = None
+room = None
+
 try:
     # Database connection class
     __dbconnect = DatabaseConnection()
@@ -21,5 +24,6 @@ try:
     # Data access objects
     user = UserDao(__dbconnect)
     navigator = NavigatorDao(__dbconnect)
+    room = RoomDao(__dbconnect)
 except Exception as e:
     log.error("Error caught (" + __file__  + "): " + str(e))

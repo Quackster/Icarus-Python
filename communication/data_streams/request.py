@@ -36,11 +36,11 @@ class Request:
         :return: string
         """
         str_length = self.read_short()
-        str = self.get_message_as_string()[self.index:self.index + str_length]
+        str = self.get_as_string()[self.index:self.index + str_length]
         self.index += str_length
         return str
 
-    def get_message_as_string(self):
+    def get_as_string(self):
         """
         Get received packet as string in ISO-8859-1 encoding
         :return: packet as string
@@ -49,7 +49,12 @@ class Request:
 
     def get_message_as_readable_string(self):
         """
-        Get received packet as string in ISO-8859-1 encoding
+        Get received packet as string in ISO-8859-1 encoding with replaced charaacters
         :return: packet as string
         """
-        return self.stream.decode("ISO-8859-1")
+        _message = self.stream.decode("ISO-8859-1")[6:]
+
+        for char in range(0, 14):
+            _message = _message.replace(chr(char), "{" + str(char) + "}")
+
+        return _message

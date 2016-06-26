@@ -4,10 +4,18 @@ Author: Alex (TheAmazingAussie)
 """
 
 import database.database_access as dao
+from managers.navigator.populators.default_room_populator import DefaultRoomPopulator
+from managers.navigator.populators.my_room_populator import MyRoomPopulator
 
 
 class NavigatorManager:
-    def __init__(self):
+    def load_manager(self):
+
+        self.populators = {
+            "DefaultRoomPopulator": DefaultRoomPopulator(),
+            "MyRoomPopulator": MyRoomPopulator()
+        }
+
         self.tabs = dao.navigator.get_tabs(-1)
 
     def get_tab(self, name):
@@ -25,5 +33,16 @@ class NavigatorManager:
         :return: list of child tab instances
         """
         return [tab for tab in self.tabs if tab.child_id == -1]
+
+    def get_populator(self, name):
+        """
+        Adds a room listing populator by name, will return default populator if nothing was specified
+        :param name: class name of populator
+        """
+        if name in self.populators:
+            return self.populators[name]
+        else:
+            return self.populators["DefaultRoomPopulator"]
+
 
 

@@ -47,10 +47,10 @@ class MessageHandler:
 
         #try:
         if message_header in self.packets:
-            log.session("[MESSAGE] Handled message with header " + str(message_header) + " / " + message.get_message_as_string())
+            log.session("[MESSAGE] Handled message with header " + str(message_header) + " / " + message.get_message_as_readable_string())
             self.packets[message_header].handle(connection, message)
         else:
-            log.session("[MESSAGE] Unhandled message header " + str(message_header) + " / " + message.get_message_as_string())
+            log.session("[MESSAGE] Unhandled message header " + str(message_header) + " / " + message.get_message_as_readable_string())
         #except Exception as e:
         #    exc_type, exc_obj, exc_tb = sys.exc_info()
         #    fname = os.path.split(exc_tb.tb_frame.f_code.co_filename)[1]

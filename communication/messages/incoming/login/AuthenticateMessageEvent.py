@@ -31,3 +31,6 @@ class AuthenticateMessageEvent:
         session.send(UniqueMachineIDMessageComposer(session.details.machine_id))
         session.send(HomeRoomMessageComposer(0, False))
         session.send(LandingWidgetMessageComposer())
+
+        # Load user rooms
+        dao.room.get_player_rooms(session.details, True)

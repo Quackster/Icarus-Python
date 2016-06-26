@@ -34,8 +34,13 @@ class SearchResultSetComposer:
                     self.response.write_bool(False)
 
                 self.response.write_bool_int(navigator_tab.thumbnail)
-                self.response.write_int(0) # room count
 
+                _rooms = navigator_tab.populator.generate_listing(room_limit, session)
+
+                self.response.write_int(len(_rooms)) # room count
+
+                for room in _rooms:
+                    room.data.serialise(self.response, False)
 
 
         else:

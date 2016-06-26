@@ -1,4 +1,6 @@
+import game
 from managers.navigator.navigator_tab import NavigatorTab
+
 
 class NavigatorDao:
     def __init__(self, database_connection):
@@ -25,6 +27,7 @@ class NavigatorDao:
             tab.button_type = row[4]
             tab.closed = (row[5] == 1)
             tab.thumbnail = (row[6] == 1)
+            tab.populator = game.navigator_manager.get_populator(row[7])
 
             tabs.append(tab) # Add parent tab
             tabs += self.get_tabs(tab.id) # Add child tabs
