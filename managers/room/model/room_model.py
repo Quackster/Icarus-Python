@@ -53,7 +53,7 @@ class RoomModel:
 
                 try:
                     if j == self.door_x and i == self.door_y:
-                        string_builder += str(self.door_z)
+                        string_builder += str(int(self.door_z))
                     else:
                         string_builder += self.square_char[j][i]
                 except Exception as e:
