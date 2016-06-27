@@ -22,8 +22,8 @@ class RoomModel:
         self.map_size_y = len(temporary)
 
         self.squares = [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]
-        self.squareHeight = [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]
-        self.squareChar = [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]
+        self.square_height = [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]
+        self.square_char = [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]
 
         for y in range(0, self.map_size_y):
 
@@ -38,13 +38,13 @@ class RoomModel:
                     self.squares[x][y] = CLOSED
                 elif self.is_numeric(square):
                     self.squares[x][y] = OPEN
-                    self.squareHeight[x][y] = float(square)
+                    self.square_height[x][y] = float(square)
 
                 if self.door_x == x and self.door_y == y:
                     self.squares[x][y] = OPEN
-                    self.squareHeight[x][y] = float(self.door_z)
+                    self.square_height[x][y] = float(self.door_z)
 
-                self.squareChar[x][y] == square
+                self.square_char[x][y] = square
 
         string_builder = ""
 
@@ -55,7 +55,7 @@ class RoomModel:
                     if j == self.door_x and i == self.door_y:
                         string_builder += str(self.door_z)
                     else:
-                        string_builder += self.squareChar[x][y]
+                        string_builder += self.square_char[j][i]
                 except Exception as e:
                     string_builder += "0"
 

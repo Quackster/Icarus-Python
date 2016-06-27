@@ -37,7 +37,7 @@ class SearchResultSetComposer:
 
                 _rooms = navigator_tab.populator.generate_listing(room_limit, session)
 
-                self.response.write_int(len(_rooms)) # room count
+                self.response.write_int(len(_rooms)) # room_dao count
 
                 for room in _rooms:
                     room.data.serialise(self.response, False)

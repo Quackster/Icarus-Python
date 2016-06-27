@@ -9,12 +9,12 @@ from communication.messages.outgoing.room.RoomDataMessageComposer import RoomDat
 class RoomInfoMessageEvent:
     def handle(self, session, message):
         """
-        Send room info when requested
+        Send room_dao info when requested
         :param session: the clients who requests RoomInfoMessageEvent handler
         :param message: the incoming message
         """
 
-        room = dao.room.get_room(message.read_int(), True)
+        room = dao.room_dao.get_room(message.read_int(), True)
 
         if room is None:
             return
@@ -24,8 +24,8 @@ class RoomInfoMessageEvent:
 
         if room_user.in_room:
             if room_user.room is not room:
-                ## Leave room
-                print ("leave room")
+                ## Leave room_dao
+                print ("leave room_dao")
             else:
                 forward_player = False
 

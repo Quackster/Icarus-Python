@@ -30,7 +30,7 @@ class UserDao:
     def fill_data(self, session, row):
         """
         Fill instance with given row data
-        :param room: the data instance to fill
+        :param room_dao: the data instance to fill
         :param row: the row fected with MySQL
         :return:
         """

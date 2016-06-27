@@ -36,7 +36,7 @@ class NavigatorManager:
 
     def get_populator(self, name):
         """
-        Adds a room listing populator by name, will return default populator if nothing was specified
+        Adds a room_dao listing populator by name, will return default populator if nothing was specified
         :param name: class name of populator
         """
         if name in self.populators:
