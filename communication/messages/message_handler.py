@@ -19,6 +19,9 @@ from communication.messages.incoming.navigator.SearchNewNavigatorEvent import *
 from communication.messages.incoming.misc.EventLogMessageEvent import *
 from communication.messages.incoming.misc.LatencyTestMessageEvent import *
 
+# Room
+from communication.messages.incoming.room.RoomInfoMessageEvent import *
+
 import communication.headers.incoming as incoming
 import util.logging as log
 import sys, os
@@ -41,7 +44,10 @@ class MessageHandler:
 
             # Misc
             incoming.EventLogMessageEvent: EventLogMessageEvent(),
-            incoming.LatencyTestMessageEvent: LatencyTestMessageEvent()
+            incoming.LatencyTestMessageEvent: LatencyTestMessageEvent(),
+
+            # Room
+            incoming.RoomInfoMessageEvent: RoomInfoMessageEvent()
 
         }
 

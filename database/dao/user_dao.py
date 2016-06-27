@@ -1,3 +1,7 @@
+"""
+User data access object
+Author: Alex (TheAmazingAussie)
+"""
 class UserDao:
     def __init__(self, database_connection):
         self.database_connection = database_connection

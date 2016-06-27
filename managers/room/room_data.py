@@ -1,3 +1,8 @@
+"""
+Room data
+Author: Alex (TheAmazingAussie)
+"""
+
 
 class RoomData:
     def __init__(self):

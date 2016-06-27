@@ -1,3 +1,7 @@
+"""
+Room data access object
+Author: Alex (TheAmazingAussie)
+"""
 import game
 from managers.room.room import Room
 
@@ -29,6 +33,33 @@ class RoomDao:
         db_cur.close()
 
         return rooms
+
+    def get_room(self, room_id, store_in_memory):
+        """
+        Returns tabs specified by child_id
+        :param child_id: the child id, if -1 will show all tabs with no parents
+        """
+
+        if room_id in game.room_manager.rooms:
+            return game.room_manager.rooms[room_id]
+
+        db_con = self.database_connection.create_connection()
+        db_cur = db_con.cursor()
+        db_cur.execute("SELECT * FROM rooms WHERE id = %s LIMIT 1", (room_id))
+
+        room = None
+
+        for row in db_cur:
+            room = Room()
+            self.fill_data(room, row)
+
+            if store_in_memory:
+                game.room_manager.add_room(room)
+
+        db_con.close()
+        db_cur.close()
+
+        return room
 
     def fill_data(self, room, row):
         """

@@ -7,11 +7,13 @@ import communication.codec.message_encoder as message_encoder
 import game
 from managers.clients.session_details import *
 from managers.clients.session_connection import *
+from managers.room.room_user import RoomUser
 
 class Session:
 
     def __init__(self, socket):
         self.socket = socket
+        self.room_user = RoomUser(self)
         self.connection = SessionConnection(self)
         self.details = Details()
 
@@ -24,4 +26,5 @@ class Session:
         """
         game.session_manager.connections.remove(self)
         self.socket.close()
+        self.room_user.dispose()
 

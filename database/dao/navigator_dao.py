@@ -1,3 +1,7 @@
+"""
+Navigator data access object
+Author: Alex (TheAmazingAussie)
+"""
 import game
 from managers.navigator.navigator_tab import NavigatorTab
 
