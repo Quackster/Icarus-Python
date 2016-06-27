@@ -24,8 +24,7 @@ class RoomInfoMessageEvent:
 
         if room_user.in_room:
             if room_user.room is not room:
-                ## Leave room_dao
-                print ("leave room_dao")
+                room_user.room.leave_room(session, True)
             else:
                 forward_player = False
 

@@ -5,10 +5,7 @@ Author: Alex (TheAmazingAussie)
 
 class RoomUser:
     def __init__(self, session):
-        self.dispose()
         self.entity = session
-
-    def dispose(self):
         self.virtual_id = 0
         self.last_chat_id = 0
         self.dance_id = 0
@@ -23,6 +20,34 @@ class RoomUser:
         self.needs_update = False
         self.is_loading_room = False
         self.in_room = False
-        self.entity = None
         self.chat_flood_timer = 0
         self.chat_count = 0
+
+
+    def stop_walking(self, needs_update):
+        return
+
+    def reset(self):
+        self.__init__(self.entity)
+
+    def dispose(self):
+        """
+        Clear all room user data by calling the constructor
+        :return: None
+        """
+        del self.entity
+        del self.virtual_id
+        del self.dance_id
+        del self.position
+        del self.goal
+        del self.rotation
+        del self.head_rotation
+        del self.statuses
+        del self.path
+        del self.room
+        del self.is_walking
+        del self.needs_update
+        del self.is_loading_room
+        del self.in_room
+        del self.chat_flood_timer
+        del self.chat_count
