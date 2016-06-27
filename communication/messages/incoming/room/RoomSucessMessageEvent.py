@@ -1,5 +1,6 @@
 import database.database_access as dao
 
+from communication.messages.outgoing.room.RoomDataMessageComposer import *
 from communication.messages.outgoing.room.heightmap.FloorMapMessageComposer import *
 from communication.messages.outgoing.room.heightmap.HeightMapMessageComposer import *
 
@@ -26,7 +27,10 @@ class RoomSuccessMessageEvent:
 
         # Finished loading room
         room_user.is_loading_room = False
-        #room_user.in_room = True
+        room_user.in_room = True
+
+        # Show room panel again, since it gets disabled
+        session.send(RoomDataMessageComposer(room, session, True, True))
 
         #room_model = session.room_user.room.get_model()
         #session.send(HeightMapMessageComposer(session.room_user.room, room_model.map_size_x, room_model.map_size_y))
