@@ -25,8 +25,8 @@ class RoomSuccessMessageEvent:
         room.entities.append(session)
 
         # Finished loading room
-        room_user.loading_room = False
         room_user.in_room = True
+        room_user.loading = False
 
         #room_model = session.room_user.room.get_model()
         #session.send(HeightMapMessageComposer(session.room_user.room, room_model.map_size_x, room_model.map_size_y))

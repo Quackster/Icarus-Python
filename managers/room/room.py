@@ -33,7 +33,7 @@ class Room:
         room_user = session.room_user
 
         room_user.room = self
-        room_user.is_loading_room = True
+        room_user.loading = True
         room_user.statuses.clear()
 
         session.send(RoomModelMessageComposer(self.get_model().name, self.data.id))

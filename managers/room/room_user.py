@@ -18,7 +18,7 @@ class RoomUser:
         self.room = None
         self.is_walking = False
         self.needs_update = False
-        self.is_loading_room = False
+        self.loading = False
         self.in_room = False
         self.chat_flood_timer = 0
         self.chat_count = 0
@@ -27,7 +27,18 @@ class RoomUser:
     def stop_walking(self, needs_update):
         return
 
+    def is_actually_in_room(self):
+        """
+        Returns whether or not a client is actually fully loaded into a room
+        :return: boolean
+        """
+        return self.in_room and not self.loading
+
     def reset(self):
+        """
+        Resets all room-user variables
+        :return: None
+        """
         self.__init__(self.entity)
 
     def dispose(self):
@@ -47,7 +58,7 @@ class RoomUser:
         del self.room
         del self.is_walking
         del self.needs_update
-        del self.is_loading_room
+        #del self.loading
         del self.in_room
         del self.chat_flood_timer
         del self.chat_count
