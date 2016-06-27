@@ -31,7 +31,7 @@ class RoomModel:
                 temporary[y] = temporary[y][1:] # Substring 1
 
             for x in range (0, self.map_size_x):
-                square = temporary[y][x:x + 1].strip().to
+                square = temporary[y][x:x + 1].strip().lower()
 
                 if square == "x":
                     self.squares.append(x)
