@@ -14,14 +14,9 @@ navigator = None
 room_dao = None
 
 try:
-    # Database connection class
-    db_connect = DatabaseConnection()
-
-    # Data access objects
-    user = UserDao(db_connect)
-    navigator = NavigatorDao(db_connect)
-    room_dao = RoomDao(db_connect)
-
+    user = UserDao(DatabaseConnection())
+    navigator = NavigatorDao(DatabaseConnection())
+    room_dao = RoomDao(DatabaseConnection())
 except Exception as e:
     log.error("Error caught (" + __file__  + "): " + str(e))
 
