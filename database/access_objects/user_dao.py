@@ -9,9 +9,9 @@ class UserDao:
     def authenticate(self, session, sso_ticket):
         """
         Verifies if a connecting client has a valid SSO ticket when logging into the server
-        :param sso_ticket: the ticket which logs in the dao from the client
+        :param sso_ticket: the ticket which logs in the access_objects from the client
         :param session: the clients connected with the sso ticket
-        :return: Boolean if dao is successfully validated
+        :return: Boolean if access_objects is successfully validated
         """
         db_con = self.database_connection.create_connection()
         db_cur = db_con.cursor()

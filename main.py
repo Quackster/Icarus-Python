@@ -5,9 +5,10 @@ Author: Alex (TheAmazingAussie)
 
 import game
 import util.logging as log
+from network.server import Server
 from database.database_connect import DatabaseConnection
 import database.database_access as dao
-from network.server import Server
+
 
 # Main program below this line
 log.line("################")
@@ -32,6 +33,10 @@ except Exception as e:
 if not db_error:
     log.info("MySQL connection was successful")
 
+
+log.info()
+log.info("Loading data access objects")
+dao.init_dao()
 
 log.info()
 log.info("Loading game instance")

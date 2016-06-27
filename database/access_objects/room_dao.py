@@ -11,6 +11,7 @@ class RoomDao:
         self.database_connection = database_connection
         self.room_models = {}
 
+    def get_models(self):
         db_con = self.database_connection.create_connection()
         db_cur = db_con.cursor()
         db_cur.execute("SELECT id, heightmap, door_x, door_y, door_z, door_dir FROM room_models")
@@ -21,6 +22,8 @@ class RoomDao:
 
         db_con.close()
         db_cur.close()
+
+        return self.room_models
 
 
     def get_player_rooms(self, details, store_in_memory):
