@@ -1,9 +1,5 @@
 import database.database_access as dao
-import communication.headers.outgoing as outgoing
-from communication.data_streams.response import Response
 
-from communication.messages.outgoing.room.FloorMapMessageComposer import FloorMapMessageComposer
-from communication.messages.outgoing.room.HeightMapMessageComposer import HeightMapMessageComposer
 
 class EnterRoomMessageEvent:
     def handle(self, session, message):

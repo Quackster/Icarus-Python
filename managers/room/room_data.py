@@ -30,6 +30,7 @@ class RoomData:
         self.hide_wall = False
         self.wall_thickness = 0
         self.floor_thickness = 0
+        self.wall_height = -1
         self.tags = []
         self.chat_type = 0
         self.chat_balloon = 0
