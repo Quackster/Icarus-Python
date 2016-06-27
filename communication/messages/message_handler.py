@@ -21,6 +21,7 @@ from communication.messages.incoming.misc.LatencyTestMessageEvent import *
 
 # Room
 from communication.messages.incoming.room.RoomInfoMessageEvent import *
+from communication.messages.incoming.room.RequestHeightmapMessageEvent import *
 
 import communication.headers.incoming as incoming
 import util.logging as log
@@ -47,7 +48,8 @@ class MessageHandler:
             incoming.LatencyTestMessageEvent: LatencyTestMessageEvent(),
 
             # Room
-            incoming.RoomInfoMessageEvent: RoomInfoMessageEvent()
+            incoming.RoomInfoMessageEvent: RoomInfoMessageEvent(),
+            incoming.RequestHeightmapMessageEvent: RequestHeightmapMessageEvent()
 
         }
 

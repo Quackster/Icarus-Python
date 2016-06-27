@@ -4,11 +4,24 @@ Author: Alex (TheAmazingAussie)
 """
 import game
 from managers.room.room import Room
-
+from managers.room.model.room_model import RoomModel
 
 class RoomDao:
     def __init__(self, database_connection):
         self.database_connection = database_connection
+        self.room_models = {}
+
+        db_con = self.database_connection.create_connection()
+        db_cur = db_con.cursor()
+        db_cur.execute("SELECT id, heightmap, door_x, door_y, door_z, door_dir FROM room_models")
+
+        for row in db_cur:
+            model = RoomModel(row[0], row[1], row[2], row[3], row[4], row[5])
+            self.room_models[model.name] = model
+
+        db_con.close()
+        db_cur.close()
+
 
     def get_player_rooms(self, details, store_in_memory):
         """

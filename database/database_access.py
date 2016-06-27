@@ -17,13 +17,13 @@ user = None
 navigator = None
 room = None
 
-try:
-    # Database connection class
-    __dbconnect = DatabaseConnection()
+#try:
+# Database connection class
+__dbconnect = DatabaseConnection()
 
-    # Data access objects
-    user = UserDao(__dbconnect)
-    navigator = NavigatorDao(__dbconnect)
-    room = RoomDao(__dbconnect)
-except Exception as e:
-    log.error("Error caught (" + __file__  + "): " + str(e))
+# Data access objects
+user = UserDao(__dbconnect)
+navigator = NavigatorDao(__dbconnect)
+room = RoomDao(__dbconnect)
+#except Exception as e:
+#    log.error("Error caught (" + __file__  + "): " + str(e))
