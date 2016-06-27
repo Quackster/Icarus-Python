@@ -21,9 +21,9 @@ class RoomModel:
         self.map_size_x = len(temporary[0])
         self.map_size_y = len(temporary)
 
-        self.squares = [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]
-        self.square_height = [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]
-        self.square_char = [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]
+        self.squares = self.get_2d_array()
+        self.square_height = self.get_2d_array()
+        self.square_char = self.get_2d_array()
 
         for y in range(0, self.map_size_y):
 
@@ -53,7 +53,7 @@ class RoomModel:
 
                 try:
                     if j == self.door_x and i == self.door_y:
-                        string_builder += str(int(self.door_z))
+                        string_builder += str(self.door_z)
                     else:
                         string_builder += self.square_char[j][i]
                 except Exception as e:
@@ -73,3 +73,6 @@ class RoomModel:
 
         except Exception as e:
             return False
+
+    def get_2d_array(self):
+        return [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]

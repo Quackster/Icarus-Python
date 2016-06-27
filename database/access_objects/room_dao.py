@@ -17,7 +17,7 @@ class RoomDao:
         db_cur.execute("SELECT id, heightmap, door_x, door_y, door_z, door_dir FROM room_models")
 
         for row in db_cur:
-            model = RoomModel(row[0], row[1], row[2], row[3], row[4], row[5])
+            model = RoomModel(row[0], row[1], int(row[2]), int(row[3]), int(row[4]), row[5])
             self.room_models[model.name] = model
 
         db_con.close()
