@@ -22,7 +22,7 @@ class RoomInfoMessageEvent:
         room_user = session.room_user
         forward_player = True
 
-        if room_user.in_room:
+        if room_user.in_room():
             if room_user.room is not room:
                 room_user.room.leave_room(session, True)
             else:

@@ -19,10 +19,16 @@ class RoomUser:
         self.is_walking = False
         self.needs_update = False
         self.is_loading_room = False
-        self.in_room = False
         self.chat_flood_timer = 0
         self.chat_count = 0
 
+    def in_room(self):
+        """
+        Returns whever or not a user is actually fully loaded into a room
+        :return:
+        """
+
+        return (self.is_loading_room == False) and (self.room is not None)
 
     def stop_walking(self, needs_update):
         return

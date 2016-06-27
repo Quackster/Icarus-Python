@@ -27,7 +27,7 @@ class RoomSuccessMessageEvent:
 
         # Finished loading room
         room_user.is_loading_room = False
-        room_user.in_room = True
+        #room_user.in_room = True
 
         # Show room panel again, since it gets disabled
         session.send(RoomDataMessageComposer(room, session, True, True))
