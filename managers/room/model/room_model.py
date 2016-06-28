@@ -48,14 +48,14 @@ class RoomModel:
 
         string_builder = ""
 
-        for i in range(0, self.map_size_y):
-            for j in range (0, self.map_size_x):
+        for x in range(0, self.map_size_y):
+            for y in range (0, self.map_size_x):
 
                 try:
-                    if j == self.door_x and i == self.door_y:
+                    if x == self.door_x and y == self.door_y:
                         string_builder += str(self.door_z)
                     else:
-                        string_builder += self.square_char[j][i]
+                        string_builder += self.square_char[x][y]
                 except Exception as e:
                     string_builder += "0"
 
@@ -75,4 +75,4 @@ class RoomModel:
             return False
 
     def get_2d_array(self):
-        return [[0 for i in range(0, self.map_size_y)] for j in range(0, self.map_size_x)]
+        return [[0 for y in range(0, self.map_size_y)] for y in range(0, self.map_size_x)]

@@ -22,7 +22,7 @@ from communication.messages.incoming.misc.LatencyTestMessageEvent import *
 # Room
 from communication.messages.incoming.room.RoomInfoMessageEvent import *
 from communication.messages.incoming.room.EnterRoomMessageEvent import *
-from communication.messages.incoming.room.RoomSucessMessageEvent import *
+from communication.messages.incoming.room.HeightMapMessageEvent import *
 
 import communication.headers.incoming as incoming
 import util.logging as log
@@ -51,7 +51,7 @@ class MessageHandler:
             # Room
             incoming.RoomInfoMessageEvent: RoomInfoMessageEvent(),
             incoming.EnterRoomMessageEvent: EnterRoomMessageEvent(),
-            incoming.RoomSucessMessageEvent: RoomSuccessMessageEvent()
+            incoming.HeightMapMessageEvent: HeightMapMessageEvent()
 
         }
 
@@ -60,7 +60,7 @@ class MessageHandler:
         Locate the incoming message and handle it
         :param connection: the clients connected
         :param message_header: the class name requested
-        :param message: the rest of the message
+        :param message: the rest of the message, if the "message" parameter is null, it won't be logged
         :return:
         """
 

@@ -31,9 +31,18 @@ class RoomUser:
         return (self.is_loading_room == False) and (self.room is not None)
 
     def stop_walking(self, needs_update):
+        """
+        Stop user from walking
+        :param needs_update:
+        :return:
+        """
         return
 
     def reset(self):
+        """
+        Reset all room user variables
+        :return:
+        """
         self.__init__(self.entity)
 
     def dispose(self):
