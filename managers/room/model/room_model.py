@@ -48,8 +48,8 @@ class RoomModel:
 
         string_builder = ""
 
-        for x in range(0, self.map_size_y):
-            for y in range (0, self.map_size_x):
+        for y in range(0, self.map_size_y):
+            for x in range (0, self.map_size_x):
 
                 try:
                     if x == self.door_x and y == self.door_y:
@@ -75,4 +75,4 @@ class RoomModel:
             return False
 
     def get_2d_array(self):
-        return [[0 for y in range(0, self.map_size_y)] for y in range(0, self.map_size_x)]
+        return [[0 for y in range(0, self.map_size_y)] for x in range(0, self.map_size_x)]
