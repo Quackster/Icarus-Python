@@ -27,7 +27,6 @@ def make_path(position, end, size_x, size_y, room):
             squares.append(Point(nodes.position.x, nodes.position.y, 0))
             nodes = nodes.next_node
 
-
     return reversed(squares)
 
 
@@ -35,6 +34,8 @@ def make_path_reversed(position, end, size_x, size_y, room):
 
     open_list = []
     map = [[None for y in range(size_y)] for x in range(size_x)]
+    node = None
+    tmp = None
 
     current = PathfinderNode(position)
     current.cost = 0
@@ -76,8 +77,15 @@ def make_path_reversed(position, end, size_x, size_y, room):
                         node.next_node = current
                         return node
 
-                    node.in_open = True
-                    open_list.append(node)
+                    if node.in_open is False:
+                        if node.position.x == finish.position.x and node.position.y == finish.position.y:
+                            node.next_node = current
+                            return node
+
+                        node.in_open = True
+                        open_list.append(node)
+
+    return None
 
 
 def is_valid_step(point):
