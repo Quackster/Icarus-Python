@@ -9,6 +9,7 @@ class RoomData:
         self.id = -1
         self.type = ""
         self.owner_id = -1
+        self.owner_name = "Alex"
         self.name = ""
         self.state = ""
         self.password = ""
@@ -46,7 +47,7 @@ class RoomData:
         response.write_int(self.id)
         response.write_string(self.name)
         response.write_int(self.owner_id)
-        response.write_string("")
+        response.write_string(self.owner_name)
         response.write_int(self.state)
         response.write_int(self.users_now)
         response.write_int(self.users_max)
@@ -72,7 +73,7 @@ class RoomData:
             if len(self.thumbnail) > 0:
                 enum_type += 1
 
-        if self.type == "private":
+        if self.type == 0: # 0 being private
             enum_type += 8
 
         if self.allow_pets:

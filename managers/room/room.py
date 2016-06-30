@@ -97,14 +97,14 @@ class Room:
         room_user.set_rotation(self.get_model().door_rotation, True, False)
 
         # Display self
-        session.send(UserDisplayMessageComposer([session]))
-        session.send(UserStatusMessageComposer([session]))
+        self.send(UserDisplayMessageComposer([session]))
+        self.send(UserStatusMessageComposer([session]))
 
         # Add user
         self.data.users_now += 1
         self.entities.append(session)
 
-        # Send users
+        # Display users for client
         session.send(UserDisplayMessageComposer(self.entities))
         session.send(UserStatusMessageComposer(self.entities))
 
