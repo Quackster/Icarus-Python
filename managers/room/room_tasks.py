@@ -14,7 +14,10 @@ class RoomTasks:
         ]
 
     def init_tasks(self):
-        #while len(self.room.get_players()) > 0:
+        """
+        Schedule all tasks to run
+        :return: None
+        """
         for task in self.tasks:
             asyncoro.Coro(task.run_task)
 

@@ -8,6 +8,9 @@ class Point:
         self.x = x
         self.y = y
         self.z = z
+        self.g = 0
+        self.h = 0
+        self.parent = None
 
     def add_point(self, point):
         return Point(self.x + point.x, self.y + point.y, self.z + point.z)

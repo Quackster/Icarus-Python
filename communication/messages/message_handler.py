@@ -24,6 +24,7 @@ from communication.messages.incoming.room.RoomInfoMessageEvent import *
 from communication.messages.incoming.room.EnterRoomMessageEvent import *
 from communication.messages.incoming.room.HeightMapMessageEvent import *
 from communication.messages.incoming.room.LeaveRoomMessageEvent import *
+from communication.messages.incoming.room.user.WalkMessageEvent import *
 
 import communication.headers.incoming as incoming
 import util.logging as log
@@ -53,7 +54,8 @@ class MessageHandler:
             incoming.RoomInfoMessageEvent: RoomInfoMessageEvent(),
             incoming.EnterRoomMessageEvent: EnterRoomMessageEvent(),
             incoming.HeightMapMessageEvent: HeightMapMessageEvent(),
-            incoming.LeaveRoomMessageEvent: LeaveRoomMessageEvent()
+            incoming.LeaveRoomMessageEvent: LeaveRoomMessageEvent(),
+            incoming.UserWalkMessageEvent: WalkMessageEvent()
 
         }
 

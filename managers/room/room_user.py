@@ -2,7 +2,9 @@
 Room user
 Author: Alex (TheAmazingAussie)
 """
-from communication.messages.outgoing.room.user.UserStatusMessageComposer import *
+from communication.messages.outgoing.room.user.UserStatusMessageComposer import UserStatusMessageComposer
+from managers.pathfinder.point import Point
+
 
 class RoomUser:
     def __init__(self, session):
@@ -10,12 +12,13 @@ class RoomUser:
         self.virtual_id = 0
         self.last_chat_id = 0
         self.dance_id = 0
-        self.position = None
-        self.goal = None
+        self.position = Point(0, 0, 0)
+        self.goal = Point(0, 0, 0)
         self.rotation = 0
         self.head_rotation = 0
         self.statuses = {}
         self.path = []
+        self.path_cycle = None
         self.room = None
         self.is_walking = False
         self.needs_update = False
