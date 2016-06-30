@@ -34,6 +34,7 @@ class RoomModel:
 
             for x in range (0, self.map_size_x):
                 square = temporary[y][x:x + 1].strip().lower()
+                self.squares[x][y] = CLOSED
 
                 if square == "x":
                     self.squares.append(x)
@@ -66,21 +67,14 @@ class RoomModel:
         self.floor_map = string_builder
 
     def is_numeric(self, input):
-
         try:
-
             number = float(input)
-
             return True
-
         except Exception as e:
             return False
 
     def get_2d_array(self):
-        return [[0 for y in range(0, self.map_size_y)] for x in range(0, self.map_size_x)]
-
-    def get_node_array(self):
-        return [[Point(x, y, 0) for y in range(self.map_size_y)] for x in range(self.map_size_x)]
+        return [[CLOSED for y in range(0, self.map_size_y)] for x in range(0, self.map_size_x)]
 
     def get_door_point(self):
         return Point(self.door_x, self.door_y, self.door_z)
