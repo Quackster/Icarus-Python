@@ -132,17 +132,18 @@ class Room:
         if hotel_view:
             session.send(HotelScreenMessageComposer())
 
-        # Remove user from room
-        self.send(RemoveUserMessageComposer(session.room_user.virtual_id))
-
-        room_user = session.room_user
-        room_user.stop_walking(False)
-        room_user.reset()
-
         if self.entities is not None:
             if session in self.entities:
                 self.data.users_now -= 1
                 self.entities.remove(session)
+
+        # Remove user from room
+        if len(self.get_players()) > 0:
+            self.send(RemoveUserMessageComposer(session.room_user.virtual_id))
+
+        room_user = session.room_user
+        room_user.stop_walking(False)
+        room_user.reset()
 
         self.dispose(False)
 
