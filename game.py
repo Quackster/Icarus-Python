@@ -4,6 +4,7 @@ Author: Alex (TheAmazingAussie)
 """
 
 import game
+from asyncoro import AsyncThreadPool
 from communication.messages.message_handler import MessageHandler
 from managers.clients.session_manager import SessionManager
 from managers.navigator.navigator_manager import NavigatorManager
@@ -14,6 +15,7 @@ message_handler = None
 session_manager = None
 navigator_manager = None
 room_manager = None
+thread_pool = None
 
 
 def init_game():
@@ -26,3 +28,4 @@ def init_game():
     game.room_manager = RoomManager()
     game.room_manager.load_manager()
 
+    game.thread_pool = AsyncThreadPool(4)

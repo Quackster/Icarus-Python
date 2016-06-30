@@ -4,12 +4,10 @@ Author: Alex (TheAmazingAussie)
 """
 
 import game
-import communication.codec.message_encoder as message_encoder
-
 from database import database_access as dao
 from managers.room.room_data import RoomData
 from managers.clients.session import Session
-from managers.room.model.point import Point
+from managers.room.room_tasks import RoomTasks
 
 from communication.messages.outgoing.room.RoomModelMessageComposer import *
 from communication.messages.outgoing.room.RoomRatingMessageComposer import *
@@ -24,6 +22,8 @@ from communication.messages.outgoing.room.heightmap.HeightMapMessageComposer imp
 
 from communication.messages.outgoing.room.user.UserStatusMessageComposer import *
 from communication.messages.outgoing.room.user.UserDisplayMessageComposer import *
+from communication.messages.outgoing.room.user.RemoveUserMessageComposer import *
+
 
 class Room:
     def __init__(self):
@@ -31,6 +31,16 @@ class Room:
         self.disposed = False
         self.virtual_counter = -1
         self.entities = []
+        self.room_tasks = RoomTasks(self)
+
+    def init_features(self):
+        """
+        Load features of the room, eg thread for walking
+        :return:
+        """
+
+        # Start thread for room tasks
+        self.room_tasks.init_tasks()
 
     def has_rights(self, user_id, only_owner_check):
         return False
@@ -108,6 +118,9 @@ class Room:
         session.send(UserDisplayMessageComposer(self.entities))
         session.send(UserStatusMessageComposer(self.entities))
 
+        # Load features if no one was in room
+        if len(self.entities) > 0:
+            self.init_features()
 
     def leave_room(self, session, hotel_view):
         """
@@ -118,6 +131,9 @@ class Room:
         """
         if hotel_view:
             session.send(HotelScreenMessageComposer())
+
+        # Remove user from room
+        self.send(RemoveUserMessageComposer(session.room_user.virtual_id))
 
         room_user = session.room_user
         room_user.stop_walking(False)
@@ -144,7 +160,7 @@ class Room:
         :param message: the message, will be passed through message encoder
         :return: None
         """
-        for entity in [player for player in self.entities if type(player) == Session]:
+        for entity in self.get_players():
             entity.send(message)
 
     def get_model(self):
@@ -153,6 +169,14 @@ class Room:
         :return: room_model.py python module
         """
         return dao.room_dao.room_models[self.data.model]
+
+    def get_players(self):
+        """
+        Get all players currently in room
+        :return: array of connected sessions
+        """
+
+        return [player for player in self.entities if type(player) == Session]
 
     def dispose(self, force_disposal):
         """
@@ -171,9 +195,11 @@ class Room:
             del self.data
 
             # Call method to erase data that share common dispose calls
+            self.__reset_state()
             self.__erase()
 
-        if len(self.entities) ==0 :
+        print ("current users: " + str(len(self.get_players())))
+        if len(self.get_players()) == 0:
 
             # If there's no users, then them we reset the state of the room for items to be loaded again
             #    amongst other things
@@ -201,10 +227,15 @@ class Room:
         :return:
         """
 
+        self.room_tasks.dispose()
+        del self.room_tasks
+
         self.entities.clear()
         del self.entities
 
         game.room_manager.rooms.pop(self.data.id, None)
+
+        self.disposed = True
 
 
 
