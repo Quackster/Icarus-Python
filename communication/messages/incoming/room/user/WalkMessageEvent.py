@@ -1,4 +1,4 @@
-from managers.pathfinder.pathfinder import *
+import managers.pathfinder.pathfinder as pathfinder
 
 class WalkMessageEvent:
     def handle(self, session, message):
@@ -11,7 +11,12 @@ class WalkMessageEvent:
         room_user.goal.x = x
         room_user.goal.y = y
 
-        astar = AStar(room_user.room.get_model().get_node_array())
-        room_user.path = astar.search(room_user.position, room_user.goal)
+        #(position, end, size_x, size_y, room):
 
-        print (room_user.path)
+        size_x = room_user.room.get_model().map_size_x
+        size_y = room_user.room.get_model().map_size_y
+
+        path_list = pathfinder.make_path(room_user.position, room_user.goal, size_x, size_y, room_user.room)
+
+        for point in path_list:
+            print (point.as_string())

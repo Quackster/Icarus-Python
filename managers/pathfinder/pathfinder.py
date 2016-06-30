@@ -34,7 +34,7 @@ def make_path(position, end, size_x, size_y, room):
 def make_path_reversed(position, end, size_x, size_y, room):
 
     open_list = []
-    map = [[PathfinderNode for y in range(size_y)] for x in range(size_x)]
+    map = [[None for y in range(size_y)] for x in range(size_x)]
 
     current = PathfinderNode(position)
     current.cost = 0
@@ -44,15 +44,15 @@ def make_path_reversed(position, end, size_x, size_y, room):
     open_list.append(current)
 
     while len(open_list) > 0:
-        current = poll_first(current)
+        current = poll_first(open_list)
         current.in_close = True
 
-        for point in MOVE_POINTS:
-            tmp = current.position.add[point]
+        for temp_point in MOVE_POINTS:
+            tmp = current.position.add_point(temp_point)
 
             is_final_move = (tmp.x == end.x) and (tmp.y == end.y)
 
-            if is_valid_step(point):
+            if is_valid_step(temp_point):
 
                 if map[tmp.x][tmp.y] is None:
                     node = PathfinderNode(tmp)
@@ -60,7 +60,7 @@ def make_path_reversed(position, end, size_x, size_y, room):
                 else:
                     node = map[tmp.x][tmp.y]
 
-                if not node.in_close:
+                if node.in_close is False:
                     diff = 0
 
                     if current.position.x != node.position.x:
