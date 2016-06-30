@@ -2,6 +2,7 @@
 Room user
 Author: Alex (TheAmazingAussie)
 """
+from communication.messages.outgoing.room.user.UserStatusMessageComposer import *
 
 class RoomUser:
     def __init__(self, session):
@@ -29,6 +30,33 @@ class RoomUser:
         """
 
         return (self.is_loading_room == False) and (self.room is not None)
+
+    def set_rotation(self, rotation, head_rotation=False, update=False):
+        """
+        Update the users rotation
+        :param rotation: the users rotation from 0 to 7
+        :param head_rotation: true/false if including head
+        :param update: update users status with new rotation
+        :return:
+        """
+
+        self.rotation = rotation
+
+        if head_rotation:
+            self.head_rotation = rotation
+
+        if update:
+            self.update_status()
+
+
+    def update_status(self):
+        """
+        Send status update in room, updates coordinates, etc
+        :return:
+        """
+
+        if self.in_room():
+            self.room.send(UserStatusMessageComposer([self.entity]))
 
     def stop_walking(self, needs_update):
         """
