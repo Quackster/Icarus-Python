@@ -3,8 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="4d87400e-3092-4a9e-8d7b-1fbee98e717a" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/messages/incoming/room/user/WalkMessageEvent.py" afterPath="$PROJECT_DIR$/communication/messages/incoming/room/user/WalkMessageEvent.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/managers/pathfinder/pathfinder.py" afterPath="$PROJECT_DIR$/managers/pathfinder/pathfinder.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/communication/messages/outgoing/room/user/UserStatusMessageComposer.py" afterPath="$PROJECT_DIR$/communication/messages/outgoing/room/user/UserStatusMessageComposer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/managers/room/model/room_model.py" afterPath="$PROJECT_DIR$/managers/room/model/room_model.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/managers/room/room_user.py" afterPath="$PROJECT_DIR$/managers/room/room_user.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/managers/room/tasks/walking_task.py" afterPath="$PROJECT_DIR$/managers/room/tasks/walking_task.py" />
     </list>
     <ignored path="server.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -25,11 +27,33 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="walking_task.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/managers/room/tasks/walking_task.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.92624354">
+              <caret line="60" column="47" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
+              <folding>
+                <element signature="e#49#100#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserStatusMessageComposer.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/communication/messages/outgoing/room/user/UserStatusMessageComposer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="WalkMessageEvent.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/communication/messages/incoming/room/user/WalkMessageEvent.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -39,16 +63,16 @@
         <entry file="file://$PROJECT_DIR$/managers/room/model/room_model.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+              <caret line="42" column="48" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="52" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pathfinder.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="pathfinder.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/managers/pathfinder/pathfinder.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.64">
+            <state vertical-scroll-proportion="0.0">
               <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
               <folding>
                 <element signature="e#73#119#0" expanded="true" />
@@ -57,11 +81,21 @@
           </provider>
         </entry>
       </file>
+      <file leaf-file-name="room.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/managers/room/room.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="130" column="11" selection-start-line="130" selection-start-column="11" selection-end-line="130" selection-end-column="11" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file leaf-file-name="room_user.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/managers/room/room_user.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="54" column="21" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="21" />
+              <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
               <folding>
                 <element signature="e#50#155#0" expanded="true" />
               </folding>
@@ -133,7 +167,6 @@
         <option value="$PROJECT_DIR$/communication/messages/incoming/login/AuthenticateMessageEvent.py" />
         <option value="$PROJECT_DIR$/managers/clients/session.py" />
         <option value="$PROJECT_DIR$/communication/messages/outgoing/room/user/UserDisplayMessageComposer.py" />
-        <option value="$PROJECT_DIR$/communication/messages/outgoing/room/user/UserStatusMessageComposer.py" />
         <option value="$PROJECT_DIR$/managers/navigator/navigator_manager.py" />
         <option value="$PROJECT_DIR$/managers/navigator/populators/popular_room_populator.py" />
         <option value="$PROJECT_DIR$/managers/navigator/populators/default_room_populator.py" />
@@ -156,17 +189,18 @@
         <option value="$PROJECT_DIR$/game.py" />
         <option value="$PROJECT_DIR$/managers/room/room.py" />
         <option value="$PROJECT_DIR$/managers/room/room_tasks.py" />
-        <option value="$PROJECT_DIR$/managers/room/room_user.py" />
-        <option value="$PROJECT_DIR$/managers/room/tasks/walking_task.py" />
         <option value="$PROJECT_DIR$/communication/messages/message_handler.py" />
         <option value="$PROJECT_DIR$/managers/pathfinder/Pathfinder.py" />
         <option value="$PROJECT_DIR$/managers/pathfinder/astar_grid.py" />
         <option value="$PROJECT_DIR$/managers/pathfinder/pathfinder_none.py" />
         <option value="$PROJECT_DIR$/managers/pathfinder/pathfinder_node.py" />
         <option value="$PROJECT_DIR$/managers/pathfinder/point.py" />
+        <option value="$PROJECT_DIR$/managers/pathfinder/pathfinder.py" />
         <option value="$PROJECT_DIR$/communication/messages/incoming/room/user/WalkMessageEvent.py" />
         <option value="$PROJECT_DIR$/managers/room/model/room_model.py" />
-        <option value="$PROJECT_DIR$/managers/pathfinder/pathfinder.py" />
+        <option value="$PROJECT_DIR$/managers/room/room_user.py" />
+        <option value="$PROJECT_DIR$/communication/messages/outgoing/room/user/UserStatusMessageComposer.py" />
+        <option value="$PROJECT_DIR$/managers/room/tasks/walking_task.py" />
       </list>
     </option>
   </component>
@@ -263,6 +297,28 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="room" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="server" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="Icarus" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="managers" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="room" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="tasks" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -960,10 +1016,10 @@
     <frame x="-8" y="-8" width="1616" height="876" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18567808" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23574145" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15194805" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.20649351" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1080,13 +1136,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="17" column="72" selection-start-line="17" selection-start-column="72" selection-end-line="17" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/communication/messages/outgoing/room/user/UserStatusMessageComposer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="64" selection-start-line="12" selection-start-column="64" selection-end-line="12" selection-end-column="64" />
         </state>
       </provider>
     </entry>
@@ -1273,13 +1322,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/managers/room/room.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="130" column="11" selection-start-line="130" selection-start-column="11" selection-end-line="130" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/managers/room/room_tasks.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1306,14 +1348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/managers/room/tasks/walking_task.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0208">
-          <caret line="28" column="37" selection-start-line="28" selection-start-column="37" selection-end-line="28" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -1346,10 +1380,44 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/managers/room/room.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="130" column="11" selection-start-line="130" selection-start-column="11" selection-end-line="130" selection-end-column="11" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/communication/messages/incoming/room/user/WalkMessageEvent.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/managers/pathfinder/pathfinder.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+          <folding>
+            <element signature="e#73#119#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/communication/messages/outgoing/room/user/UserStatusMessageComposer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="25" selection-start-line="22" selection-start-column="25" selection-end-line="22" selection-end-column="25" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/managers/room/room_user.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="54" column="21" selection-start-line="54" selection-start-column="8" selection-end-line="54" selection-end-column="21" />
+          <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
           <folding>
             <element signature="e#50#155#0" expanded="true" />
           </folding>
@@ -1359,25 +1427,17 @@
     <entry file="file://$PROJECT_DIR$/managers/room/model/room_model.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="76" column="23" selection-start-line="76" selection-start-column="23" selection-end-line="76" selection-end-column="23" />
+          <caret line="42" column="48" selection-start-line="42" selection-start-column="47" selection-end-line="42" selection-end-column="52" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/communication/messages/incoming/room/user/WalkMessageEvent.py">
+    <entry file="file://$PROJECT_DIR$/managers/room/tasks/walking_task.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="77" selection-start-line="18" selection-start-column="77" selection-end-line="18" selection-end-column="77" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/managers/pathfinder/pathfinder.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.64">
-          <caret line="96" column="0" selection-start-line="96" selection-start-column="0" selection-end-line="96" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.92624354">
+          <caret line="60" column="47" selection-start-line="60" selection-start-column="47" selection-end-line="60" selection-end-column="47" />
           <folding>
-            <element signature="e#73#119#0" expanded="true" />
+            <element signature="e#49#100#0" expanded="true" />
           </folding>
         </state>
       </provider>

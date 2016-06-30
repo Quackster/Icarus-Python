@@ -67,7 +67,15 @@ class RoomUser:
         :param needs_update:
         :return:
         """
-        return
+
+        if "mv" in self.statuses:
+            self.statuses.pop("mv", None)
+
+        self.needs_update = needs_update
+        self.is_walking = False
+        self.path = []
+        self.update_status()
+
 
     def reset(self):
         """

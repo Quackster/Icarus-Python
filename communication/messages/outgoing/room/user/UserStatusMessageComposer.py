@@ -20,4 +20,6 @@ class UserStatusMessageComposer:
             for key, value in entity.room_user.statuses.items():
                 status += key + " " + value + "/"
 
+            print (status)
+
             self.response.write_string(status + "/")

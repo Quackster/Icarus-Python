@@ -18,6 +18,9 @@ class WalkMessageEvent:
 
         path_list = pathfinder.make_path(room_user.position, room_user.goal, room_user.room)
 
+        room_user.path = path_list
+        room_user.is_walking = True
+
         #for point in path_list:
         #    print (point.as_string())
         print ("Path list len: " + str(len(path_list)))

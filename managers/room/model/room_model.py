@@ -34,7 +34,6 @@ class RoomModel:
 
             for x in range (0, self.map_size_x):
                 square = temporary[y][x:x + 1].strip().lower()
-                self.squares[x][y] = CLOSED
 
                 if square == "x":
                     self.squares.append(x)
