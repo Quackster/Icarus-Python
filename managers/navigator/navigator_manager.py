@@ -6,16 +6,19 @@ Author: Alex (TheAmazingAussie)
 import database.database_access as dao
 from managers.navigator.populators.default_room_populator import DefaultRoomPopulator
 from managers.navigator.populators.my_room_populator import MyRoomPopulator
+from managers.navigator.populators.popular_room_populator import PopularRoomPopulator
 
 
 class NavigatorManager:
-    def load_manager(self):
 
+    def __init__(self):
         self.populators = {
             "DefaultRoomPopulator": DefaultRoomPopulator(),
-            "MyRoomPopulator": MyRoomPopulator()
+            "MyRoomPopulator": MyRoomPopulator(),
+            "PopularRoomPopulator": PopularRoomPopulator()
         }
 
+    def load_manager(self):
         self.tabs = dao.navigator.get_tabs(-1)
 
     def get_tab(self, name):
