@@ -4,8 +4,12 @@ Author: Alex (TheAmazingAussie)
 """
 
 import game
+import communication.codec.message_encoder as message_encoder
+
 from database import database_access as dao
 from managers.room.room_data import RoomData
+from managers.clients.session import Session
+from managers.room.model.point import Point
 
 from communication.messages.outgoing.room.RoomModelMessageComposer import *
 from communication.messages.outgoing.room.RoomRatingMessageComposer import *
@@ -17,6 +21,9 @@ from communication.messages.outgoing.room.HotelScreenMessageComposer import *
 from communication.messages.outgoing.room.RoomDataMessageComposer import *
 from communication.messages.outgoing.room.heightmap.FloorMapMessageComposer import *
 from communication.messages.outgoing.room.heightmap.HeightMapMessageComposer import *
+
+from communication.messages.outgoing.room.user.UserStatusMessageComposer import *
+from communication.messages.outgoing.room.user.UserDisplayMessageComposer import *
 
 class Room:
     def __init__(self):
@@ -79,15 +86,28 @@ class Room:
         room_user = session.room_user
         room_user.virtual_id = self.get_virtual_id()
 
-        # Add user
-        self.data.users_now += 1
-        self.entities.append(session)
-
         # Finished loading room
         room_user.is_loading_room = False
 
         # Show room panel again, since it gets disabled
         session.send(RoomDataMessageComposer(self, session, True, True))
+
+        # Set position shit
+        room_user.position = self.get_model().get_door_point()
+        room_user.set_rotation(self.get_model().door_rotation, True, False)
+
+        # Display self
+        session.send(UserDisplayMessageComposer([session]))
+        session.send(UserStatusMessageComposer([session]))
+
+        # Add user
+        self.data.users_now += 1
+        self.entities.append(session)
+
+        # Send users
+        session.send(UserDisplayMessageComposer(self.entities))
+        session.send(UserStatusMessageComposer(self.entities))
+
 
     def leave_room(self, session, hotel_view):
         """
@@ -96,7 +116,6 @@ class Room:
         :param hotel_view: optional to send them to hotel view
         :return:
         """
-
         if hotel_view:
             session.send(HotelScreenMessageComposer())
 
@@ -114,10 +133,19 @@ class Room:
     def get_virtual_id(self):
         """
         Virtual room user identification
-        :return:
+        :return: None
         """
         self.virtual_counter += 1
         return self.virtual_counter
+
+    def send(self, message):
+        """
+        Sends room message to all players in room
+        :param message: the message, will be passed through message encoder
+        :return: None
+        """
+        for entity in [player for player in self.entities if type(player) == Session]:
+            entity.send(message)
 
     def get_model(self):
         """

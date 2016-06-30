@@ -3,6 +3,8 @@ Room model data
 Author: Alex (TheAmazingAussie)
 """
 
+from managers.room.model.point import Point
+
 OPEN = 0
 CLOSED = 1
 
@@ -76,3 +78,6 @@ class RoomModel:
 
     def get_2d_array(self):
         return [[0 for y in range(0, self.map_size_y)] for x in range(0, self.map_size_x)]
+
+    def get_door_point(self):
+        return Point(self.door_x, self.door_y, self.door_z)

@@ -34,7 +34,12 @@ class Session:
         if self.room_user.in_room():
             self.room_user.room.leave_room(self, False)
 
+        # Remove user from list of connections
         game.session_manager.connections.remove(self)
-        self.socket.close()
+
+        # Dispose user objects
         self.room_user.dispose()
+
+        # Close socket
+        self.socket.close()
 
