@@ -26,7 +26,7 @@ class WalkingTask:
                 room_user = entity.room_user
 
                 if room_user.position.same_as(room_user.goal):
-                    room_user.stop_walking(True)
+                    room_user.stop_walking(False)
 
                 if room_user.is_walking:
                     if len(room_user.path) > 0:

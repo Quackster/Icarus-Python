@@ -72,9 +72,12 @@ class RoomUser:
             self.statuses.pop("mv", None)
 
         self.needs_update = needs_update
-        self.is_walking = False
         self.path = []
-        self.update_status()
+
+        if self.is_walking:
+            self.update_status()
+
+        self.is_walking = False
 
 
     def reset(self):
