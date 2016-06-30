@@ -74,3 +74,4 @@ WallItemsMessageComposer = 351
 PlaceFloorItemMessageComposer = 718
 PlaceWallItemMessageComposer = 1366
 RemoveInventoryItemComposer = 639
+MOTDMessageComposer = 773

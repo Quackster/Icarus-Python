@@ -29,6 +29,11 @@ class Session:
         """
         Force lose socket on demand
         """
+
+        # Leave room when disconnect
+        if self.room_user.in_room():
+            self.room_user.room.leave_room(self, False)
+
         game.session_manager.connections.remove(self)
         self.socket.close()
         self.room_user.dispose()

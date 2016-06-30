@@ -10,6 +10,7 @@ from communication.messages.outgoing.login.UniqueMachineIDMessageComposer import
 from communication.messages.outgoing.login.AuthenticationOKMessageComposer import *
 from communication.messages.outgoing.login.HomeRoomMessageComposer import *
 from communication.messages.outgoing.login.LandingWidgetMessageComposer import *
+from communication.messages.outgoing.user.MOTDMessageComposer import *
 
 
 class AuthenticateMessageEvent:
@@ -21,8 +22,6 @@ class AuthenticateMessageEvent:
         """
         sso_ticket = message.read_string()
 
-        log.session("SSO ticket: " + sso_ticket)
-
         if not dao.user.authenticate(session, sso_ticket):
             session.close()
             return
@@ -32,11 +31,8 @@ class AuthenticateMessageEvent:
         session.send(HomeRoomMessageComposer(0, False))
         session.send(LandingWidgetMessageComposer())
 
-        #response = Response(773)
-        #response.write_int(1)
-        #response.write_string("str 1")
-        #session.send(response)
-
+        # MOTD
+        session.send(MOTDMessageComposer("Hello, welcome to Icarus Server\n\nThe only Habbo hotel private server written in Python!"))
 
 
         # Load user rooms
