@@ -1,5 +1,5 @@
 """
-Check release of SWF version
+Display currency event
 Author: Alex (TheAmazingAussie)
 """
 

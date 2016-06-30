@@ -1,4 +1,7 @@
-import database.database_access as dao
+"""
+Leave room event
+Author: Alex (TheAmazingAussie)
+"""
 
 
 class LeaveRoomMessageEvent:

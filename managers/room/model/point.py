@@ -1,3 +1,7 @@
+"""
+Point class to handle coordinates and height
+Author: Alex (TheAmazingAussie)
+"""
 class Point:
 
     def __init__(self, x, y, z):

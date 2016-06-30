@@ -1,4 +1,7 @@
-import database.database_access as dao
+"""
+Load heightmap and furniture/AI data for room
+Author: Alex (TheAmazingAussie)
+"""
 
 
 class HeightMapMessageEvent:

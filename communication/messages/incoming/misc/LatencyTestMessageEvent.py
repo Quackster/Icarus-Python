@@ -1,5 +1,5 @@
 """
-Check release of SWF version
+Packet checking class
 Author: Alex (TheAmazingAussie)
 """
 

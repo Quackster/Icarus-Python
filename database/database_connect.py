@@ -1,3 +1,8 @@
+"""
+Database connection class
+Author: Alex (TheAmazingAussie)
+"""
+
 import pymysql
 
 

@@ -1,5 +1,5 @@
 """
-Check release of SWF version
+Display information for user event
 Author: Alex (TheAmazingAussie)
 """
 

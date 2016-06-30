@@ -1,3 +1,8 @@
+"""
+Display my own rooms populator
+Author: Alex (TheAmazingAussie)
+"""
+
 import game
 import operator
 

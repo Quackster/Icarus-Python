@@ -1,5 +1,5 @@
 """
-Check release of SWF version
+Load new navigator event
 Author: Alex (TheAmazingAussie)
 """
 

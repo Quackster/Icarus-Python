@@ -1,3 +1,7 @@
+"""
+Logging class
+Author: Alex (TheAmazingAussie)
+"""
 
 def line(output_line=''):
     """
