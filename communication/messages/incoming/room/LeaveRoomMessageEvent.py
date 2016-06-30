@@ -1,7 +1,7 @@
 import database.database_access as dao
 
 
-class HeightMapMessageEvent:
+class LeaveRoomMessageEvent:
     def handle(self, session, message):
 
         room = session.room_user.room
@@ -9,10 +9,10 @@ class HeightMapMessageEvent:
         if room is None:
             return
 
-        if session in room.entities:
+        if session not in room.entities:
             return
 
-        room.load_heightmap(session)
+        room.leave_room(session, True)
 
         #room_model = session.room_user.room.get_model()
         #session.send(HeightMapMessageComposer(session.room_user.room, room_model.map_size_x, room_model.map_size_y))

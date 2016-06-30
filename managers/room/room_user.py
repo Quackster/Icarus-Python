@@ -45,6 +45,8 @@ class RoomUser:
         """
         self.__init__(self.entity)
 
+        print (self.room)
+
     def dispose(self):
         """
         Clear all room user data by calling the constructor
@@ -63,6 +65,5 @@ class RoomUser:
         del self.is_walking
         del self.needs_update
         del self.is_loading_room
-        del self.in_room
         del self.chat_flood_timer
         del self.chat_count

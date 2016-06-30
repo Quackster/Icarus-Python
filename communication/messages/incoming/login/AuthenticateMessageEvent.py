@@ -32,5 +32,12 @@ class AuthenticateMessageEvent:
         session.send(HomeRoomMessageComposer(0, False))
         session.send(LandingWidgetMessageComposer())
 
+        #response = Response(773)
+        #response.write_int(1)
+        #response.write_string("str 1")
+        #session.send(response)
+
+
+
         # Load user rooms
         dao.room_dao.get_player_rooms(session.details, True)
