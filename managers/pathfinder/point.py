@@ -8,9 +8,6 @@ class Point:
         self.x = x
         self.y = y
         self.z = z
-        self.g = 0
-        self.h = 0
-        self.parent = None
 
     def add_point(self, point):
         return Point(self.x + point.x, self.y + point.y, self.z + point.z)
@@ -25,3 +22,6 @@ class Point:
 
     def same_as(self, point):
         return self.x == point.x and self.y == point.y
+
+    def as_string(self):
+        return str(self.x) + ", " + str(self.y) + ", " + str(self.z)
