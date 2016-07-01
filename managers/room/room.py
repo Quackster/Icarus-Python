@@ -32,6 +32,7 @@ class Room:
         self.virtual_counter = -1
         self.entities = []
         self.room_tasks = RoomTasks(self)
+        self.collision_map = []
 
     def init_features(self):
         """
@@ -42,8 +43,26 @@ class Room:
         # Start thread for room tasks
         self.room_tasks.init_tasks()
 
+        # Create collision map
+        self.collision_map = self.get_model().get_2d_array()
+
+        # Fill map with points which aren't availiable
+        self.regenerate_collision_map()
+
+    def regenerate_collision_map(self):
+        """
+        Create collision map used for pathfinding
+        :return:
+        """
+        squares = self.get_model().squares
+
+        for y in range(0, self.get_model().map_size_y):
+            for x in range (0, self.get_model().map_size_x):
+                self.collision_map[x][y] = squares[x][y]
+
+
     def has_rights(self, user_id, only_owner_check):
-        return False
+        return self.data.owner_id == user_id
 
     def load_room(self, session):
         """
@@ -114,13 +133,13 @@ class Room:
         self.data.users_now += 1
         self.entities.append(session)
 
+        # Load features if no one was in room
+        if len(self.get_players()) == 1:
+            self.init_features()
+
         # Display users for client
         session.send(UserDisplayMessageComposer(self.entities))
         session.send(UserStatusMessageComposer(self.entities))
-
-        # Load features if no one was in room
-        if len(self.entities) > 0:
-            self.init_features()
 
     def leave_room(self, session, hotel_view):
         """
@@ -229,10 +248,11 @@ class Room:
         """
 
         self.room_tasks.dispose()
-        del self.room_tasks
-
         self.entities.clear()
+
+        del self.room_tasks
         del self.entities
+        del self.collision_map
 
         game.room_manager.rooms.pop(self.data.id, None)
 

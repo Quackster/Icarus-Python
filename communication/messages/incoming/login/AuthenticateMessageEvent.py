@@ -32,7 +32,7 @@ class AuthenticateMessageEvent:
         session.send(LandingWidgetMessageComposer())
 
         # MOTD
-        session.send(MOTDMessageComposer("Hello, welcome to Icarus Server\n\nThe only Habbo hotel private server written in Python!"))
+        #session.send(MOTDMessageComposer("Hello, welcome to Icarus Server\n\nThe only Habbo hotel private server written in Python!"))
 
 
         # Load user rooms
