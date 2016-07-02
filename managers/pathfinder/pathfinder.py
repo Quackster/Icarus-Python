@@ -2,11 +2,13 @@
 Pathfinder
 Ported from Java by Alex (Quackster/TheAmazingAussie)
 """
-import managers.room.model.room_model as model
 from managers.pathfinder.point import Point
 from managers.pathfinder.pathfinder_node import PathfinderNode
 
 
+"""
+All 8 compass points around a tile
+"""
 MOVE_POINTS = [
     Point(0, -1, 0),
     Point(0, 1, 0),
@@ -19,9 +21,16 @@ MOVE_POINTS = [
 ]
 
 
-def make_path(position, end, room):
+def make_path(position, end, size_x, size_y, room):
+    """
+    Create programming path
+    :param position:
+    :param end:
+    :param room:
+    :return:
+    """
     squares = []
-    nodes = make_path_reversed(position, end, room)
+    nodes = make_path_reversed(position, end, size_x, size_y, room)
 
     if nodes is not None:
         while nodes.next_node is not None:
@@ -31,10 +40,10 @@ def make_path(position, end, room):
     return squares[::-1] # Reverse list
 
 
-def make_path_reversed(position, end, room):
+def make_path_reversed(position, end, size_x, size_y, room):
 
     open_list = []
-    map = [[None for y in range(0, room.get_model().map_size_y)] for x in range(0, room.get_model().map_size_x)]
+    map = [[None for y in range(0, size_y)] for x in range(0, size_x)]
     node = None
     tmp = None
     cost = 0
@@ -56,7 +65,7 @@ def make_path_reversed(position, end, room):
 
             is_final_move = (tmp.x == end.x) and (tmp.y == end.y)
 
-            if is_valid_step(room, Point(current.position.x, current.position.y, current.position.z), tmp, is_final_move):
+            if room.room_mapping.is_valid_step(Point(current.position.x, current.position.y, current.position.z), tmp, is_final_move):
 
                 if map[tmp.x][tmp.y] is None:
                     node = PathfinderNode(tmp)
@@ -88,32 +97,6 @@ def make_path_reversed(position, end, room):
                         open_list.append(node)
 
     return None
-
-
-def is_valid_step(room, current, tmp, final_move):
-    """
-    Check if the attempted space is a valid step to walk in
-    :param room: the room of the pathfinder calculation
-    :param current: the current coordinate
-    :param tmp: the coordinate to check from around the current coord
-    :param final_move: if this is the last coordinate check
-    :return:
-    """
-    try:
-
-        # Stop user walking diagonally through solid objects
-        if current.x != tmp.x and current.y != tmp.y:
-
-            diagonal1 = room.room_mapping.is_closed(tmp.x, current.y)
-            diagonal2 = room.room_mapping.is_closed(current.x, tmp.y)
-
-            if diagonal1 or diagonal2:
-                return False
-
-        return room.room_mapping.is_open(tmp.x, tmp.y)
-
-    except Exception as e:
-        return False
 
 
 def poll_first(list):

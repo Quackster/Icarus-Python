@@ -16,7 +16,7 @@ class WalkMessageEvent:
         size_x = room_user.room.get_model().map_size_x
         size_y = room_user.room.get_model().map_size_y
 
-        path_list = pathfinder.make_path(room_user.position, room_user.goal, room_user.room)
+        path_list = pathfinder.make_path(room_user.position, room_user.goal, size_x, size_y, room_user.room)
 
         room_user.path = path_list
         room_user.is_walking = True
