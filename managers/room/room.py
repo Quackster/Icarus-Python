@@ -6,8 +6,9 @@ Author: Alex (TheAmazingAussie)
 import game
 from database import database_access as dao
 from managers.room.room_data import RoomData
-from managers.clients.session import Session
 from managers.room.room_tasks import RoomTasks
+from managers.room.room_mapping import RoomMapping
+from managers.clients.session import Session
 
 from communication.messages.outgoing.room.RoomModelMessageComposer import *
 from communication.messages.outgoing.room.RoomRatingMessageComposer import *
@@ -15,7 +16,7 @@ from communication.messages.outgoing.room.RoomSpacesMessageComposer import *
 from communication.messages.outgoing.room.RoomRightsLevelMessageComposer import *
 from communication.messages.outgoing.room.HasOwnerRightsMessageComposer import *
 from communication.messages.outgoing.room.PrepareRoomMessageComposer import *
-from communication.messages.outgoing.room.HotelScreenMessageComposer import *
+from communication.messages.outgoing.room.HotelViewMessageComposer import *
 from communication.messages.outgoing.room.RoomDataMessageComposer import *
 from communication.messages.outgoing.room.heightmap.FloorMapMessageComposer import *
 from communication.messages.outgoing.room.heightmap.HeightMapMessageComposer import *
@@ -32,7 +33,7 @@ class Room:
         self.virtual_counter = -1
         self.entities = []
         self.room_tasks = RoomTasks(self)
-        self.collision_map = []
+        self.room_mapping = RoomMapping(self)
 
     def init_features(self):
         """
@@ -47,18 +48,7 @@ class Room:
         self.collision_map = self.get_model().get_2d_array()
 
         # Fill map with points which aren't availiable
-        self.regenerate_collision_map()
-
-    def regenerate_collision_map(self):
-        """
-        Create collision map used for pathfinding
-        :return:
-        """
-        squares = self.get_model().squares
-
-        for y in range(0, self.get_model().map_size_y):
-            for x in range (0, self.get_model().map_size_x):
-                self.collision_map[x][y] = squares[x][y]
+        self.room_mapping.regenerate_collision_map()
 
 
     def has_rights(self, user_id, only_owner_check):
@@ -149,7 +139,7 @@ class Room:
         :return:
         """
         if hotel_view:
-            session.send(HotelScreenMessageComposer())
+            session.send(HotelViewMessageComposer())
 
         if self.entities is not None:
             if session in self.entities:
@@ -218,7 +208,6 @@ class Room:
             self.__reset_state()
             self.__erase()
 
-        print ("current users: " + str(len(self.get_players())))
         if len(self.get_players()) == 0:
 
             # If there's no users, then them we reset the state of the room for items to be loaded again
@@ -237,7 +226,10 @@ class Room:
         :return:
         """
 
+        print ("[UNLOAD] Room with id (" + str(self.data.id) + ") is unloaded")
+
         self.virtual_counter = -1
+        self.room_mapping.dispose()
 
         return
 

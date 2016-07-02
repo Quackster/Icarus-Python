@@ -10,6 +10,3 @@ class EnterRoomMessageEvent:
             return
 
         room.load_room(session)
-
-        #room_model = session.room_user.room.get_model()
-        #session.send(HeightMapMessageComposer(session.room_user.room, room_model.map_size_x, room_model.map_size_y))

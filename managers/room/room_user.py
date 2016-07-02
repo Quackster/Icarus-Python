@@ -87,8 +87,6 @@ class RoomUser:
         """
         self.__init__(self.entity)
 
-        print (self.room)
-
     def dispose(self):
         """
         Clear all room user data by calling the constructor
