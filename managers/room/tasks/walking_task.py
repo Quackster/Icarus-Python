@@ -49,6 +49,11 @@ class WalkingTask:
                         room_user.statuses["mv"] = str(next.x) + "," + str(next.y) + "," + str(height)
                         room_user.update_status()
 
+                        # Update collision map
+                        if not self.room.data.allow_walkthrough:
+                            self.room.room_mapping.update_map(room_user.position.x, room_user.position.y, False)
+                            self.room.room_mapping.update_map(next.x, next.y, True)
+
                         room_user.position.x = next.x
                         room_user.position.y = next.y
                         room_user.position.z = height

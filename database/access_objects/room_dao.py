@@ -100,4 +100,10 @@ class RoomDao:
         room.data.tags = row[13].split(",")
         room.data.trade_state = row[14]
         room.data.state = row[15]
-        room.data.category = row[16]
+        room.data.score = row[16]
+        room.data.category = row[17]
+        room.data.allow_pets = row[18] == 1
+        room.data.allow_pets_eat = row[19] == 1
+        room.data.allow_walkthrough = row[20] == 1
+
+        print (room.data.allow_walkthrough)

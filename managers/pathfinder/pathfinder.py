@@ -90,12 +90,27 @@ def make_path_reversed(position, end, room):
     return None
 
 
-def is_valid_step(room, point, tmp, final_move):
-
+def is_valid_step(room, current, tmp, final_move):
+    """
+    Check if the attempted space is a valid step to walk in
+    :param room: the room of the pathfinder calculation
+    :param current: the current coordinate
+    :param tmp: the coordinate to check from around the current coord
+    :param final_move: if this is the last coordinate check
+    :return:
+    """
     try:
-        square = room.get_model().squares[tmp.x][tmp.y]
 
-        return square == model.OPEN
+        # Stop user walking diagonally through solid objects
+        if current.x != tmp.x and current.y != tmp.y:
+
+            diagonal1 = room.room_mapping.is_closed(tmp.x, current.y)
+            diagonal2 = room.room_mapping.is_closed(current.x, tmp.y)
+
+            if diagonal1 or diagonal2:
+                return False
+
+        return room.room_mapping.is_open(tmp.x, tmp.y)
 
     except Exception as e:
         return False

@@ -39,6 +39,24 @@ class RoomMapping:
         else:
             self.collision_map[x][y] = model.OPEN
 
+    def is_closed(self, x, y):
+        """
+        Returns whether or not a coordinate in the room is closed
+        :param x: x coordinate
+        :param y: y coordinate
+        :return:
+        """
+        return self.collision_map[x][y] == model.CLOSED
+
+    def is_open(self, x, y):
+        """
+        Returns whether or not a coordinate in the room is open
+        :param x: x coordinate
+        :param y: y coordinate
+        :return:
+        """
+        return self.collision_map[x][y] == model.OPEN
+
     def dispose(self):
         """
         Dispose all collision map properties
