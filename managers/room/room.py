@@ -44,9 +44,6 @@ class Room:
         # Start thread for room tasks
         self.room_tasks.init_tasks()
 
-        # Create collision map
-        self.collision_map = self.get_model().get_2d_array()
-
         # Fill map with points which aren't availiable
         self.room_mapping.regenerate_collision_map()
 
@@ -244,7 +241,7 @@ class Room:
 
         del self.room_tasks
         del self.entities
-        del self.collision_map
+        del self.room_mapping
 
         game.room_manager.rooms.pop(self.data.id, None)
 

@@ -105,5 +105,3 @@ class RoomDao:
         room.data.allow_pets = row[18] == 1
         room.data.allow_pets_eat = row[19] == 1
         room.data.allow_walkthrough = row[20] == 1
-
-        print (room.data.allow_walkthrough)
