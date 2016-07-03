@@ -9,4 +9,7 @@ class EnterRoomMessageEvent:
         if room is None:
             return
 
+        if session in room.entities:
+            return
+
         room.load_room(session)

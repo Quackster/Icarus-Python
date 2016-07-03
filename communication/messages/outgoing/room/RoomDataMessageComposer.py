@@ -11,10 +11,10 @@ class RoomDataMessageComposer:
         self.response.write_bool(False);
         self.response.write_bool(False);
         self.response.write_bool(False);
-        self.response.write_int(False);
-        self.response.write_int(False);
-        self.response.write_int(False);
-        self.response.write_int(room.has_rights(player.details.id, True));
+        self.response.write_bool_int(False);
+        self.response.write_bool_int(False);
+        self.response.write_bool_int(False);
+        self.response.write_bool(room.has_rights(player.details.id, True));
         self.response.write_int(0);
         self.response.write_int(0);
         self.response.write_int(0);
