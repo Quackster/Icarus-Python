@@ -12,7 +12,7 @@ class LeaveRoomMessageEvent:
         if room is None:
             return
 
-        if session not in room.entities:
+        if not room.in_room(session.details.id):
             return
 
         room.leave_room(session, True)

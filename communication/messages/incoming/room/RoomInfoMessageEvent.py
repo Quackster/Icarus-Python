@@ -19,6 +19,12 @@ class RoomInfoMessageEvent:
         if room is None:
             return
 
+        if session.room_user.room is not None:
+            if room.data.id == session.room_user.room.data.id:
+                return
+            else:
+                session.room_user.room.leave_room(session, False)
+
         session.send(RoomDataMessageComposer(room, session, message.read_int() == 1, message.read_int() == 1))
 
         #room_user = session.room_user

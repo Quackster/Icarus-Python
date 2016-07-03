@@ -65,8 +65,8 @@ class Room:
         room_user = session.room_user
 
         # Leave previous room if the user was already in a different room
-        if room_user.room is not None:
-            room_user.room.leave_room(session, False)
+        #if room_user.room is not None:
+        #    room_user.room.leave_room(session, False)
 
         room_user.room = self
 
@@ -203,6 +203,19 @@ class Room:
         """
 
         return [player for player in self.entities if type(player) == Session]
+
+    def in_room(self, entity_id):
+        """
+        Returns true if the entity is in a room with the given id
+        :param entity_id: the unique id for the entity, from the database
+        :return:
+        """
+
+        for entity in self.entities:
+            if entity.details.id == entity_id:
+                return True
+
+        return False
 
     def dispose(self, force_disposal):
         """

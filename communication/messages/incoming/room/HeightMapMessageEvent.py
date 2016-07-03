@@ -12,7 +12,7 @@ class HeightMapMessageEvent:
         if room is None:
             return
 
-        if session in room.entities:
+        if room.in_room(session.details.id):
             return
 
         room.load_heightmap(session)
