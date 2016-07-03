@@ -13,8 +13,9 @@ from managers.clients.session import Session
 from communication.messages.outgoing.room.RoomModelMessageComposer import *
 from communication.messages.outgoing.room.RoomRatingMessageComposer import *
 from communication.messages.outgoing.room.RoomSpacesMessageComposer import *
-from communication.messages.outgoing.room.RoomRightsLevelMessageComposer import *
-from communication.messages.outgoing.room.HasOwnerRightsMessageComposer import *
+from communication.messages.outgoing.room.RightsLevelMessageComposer import *
+from communication.messages.outgoing.room.NoRightsMessageComposer import *
+from communication.messages.outgoing.room.YouAreOwnerComposer import *
 from communication.messages.outgoing.room.PrepareRoomMessageComposer import *
 from communication.messages.outgoing.room.HotelViewMessageComposer import *
 from communication.messages.outgoing.room.RoomDataMessageComposer import *
@@ -63,7 +64,12 @@ class Room:
 
         room_user = session.room_user
 
+        # Leave previous room if the user was already in a different room
+        if room_user.room is not None:
+            room_user.room.leave_room(session, False)
+
         room_user.room = self
+
         room_user.is_loading_room = True
         room_user.statuses.clear()
 
@@ -85,16 +91,19 @@ class Room:
         # Landscape design
         session.send(RoomSpacesMessageComposer("landscape", self.data.landscape))
 
-        is_owner = self.has_rights(session.details.id, True)
-
         # Send rights
-        if is_owner:
-            session.send(RoomRightsLevelMessageComposer(4))
-            session.send(HasOwnerRightsMessageComposer())
+        if  self.has_rights(session.details.id, True):
+
+            session.room_user.statuses["flatctrl"] = "useradmin"
+            session.send(YouAreOwnerComposer())
+            session.send(RightsLevelMessageComposer(4))
+
         elif self.has_rights(session.details.id, False):
-            session.send(RoomRightsLevelMessageComposer(1))
+
+            session.room_user.statuses["flatctrl"] = "1"
+            session.send(RightsLevelMessageComposer(1))
         else:
-            session.send(RoomRightsLevelMessageComposer(0))
+            session.send(NoRightsMessageComposer())
 
         session.send(PrepareRoomMessageComposer(self.data.id))
 
@@ -134,18 +143,9 @@ class Room:
         session.send(UserDisplayMessageComposer(self.entities))
         session.send(UserStatusMessageComposer(self.entities))
 
-        # Enable room edit panel for owner
+        # Normal has rights for general users
         is_owner = self.has_rights(session.details.id, True)
         session.send(RoomOwnerRightsComposer(self.data.id, is_owner))
-
-        # Normal has rights for general users
-        has_rights = self.has_rights(session.details.id, True)
-
-        if has_rights:
-            session.room_user.statuses["flatctrl"] = "1"
-
-        # Show room panel again, since it gets disabled
-        session.send(RoomDataMessageComposer(self, session, True, True))
 
     def leave_room(self, session, hotel_view):
         """
