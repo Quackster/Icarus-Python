@@ -38,9 +38,9 @@ class RoomData:
         self.chat_speed = 0
         self.chat_max_distance = 0
         self.chat_flood_protection = 0
-        self.who_can_mute = 2
-        self.who_can_kick = 2
-        self.who_can_ban = 2
+        self.who_can_mute = 1
+        self.who_can_kick = 1
+        self.who_can_ban = 1
 
     def serialise(self, response, enter_room):
         
