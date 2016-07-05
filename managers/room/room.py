@@ -4,6 +4,7 @@ Author: Alex (TheAmazingAussie)
 """
 
 import game
+import asyncoro
 from database import database_access as dao
 from managers.room.room_data import RoomData
 from managers.room.room_tasks import RoomTasks
@@ -30,10 +31,12 @@ from communication.messages.outgoing.room.user.RemoveUserMessageComposer import 
 
 class Room:
     def __init__(self):
-        self.data = RoomData()
         self.disposed = False
+        self.has_reset = False
+        self.data = RoomData()
         self.virtual_counter = -1
         self.entities = []
+        self.cycle = None
         self.room_tasks = RoomTasks(self)
         self.room_mapping = RoomMapping(self)
 
@@ -43,12 +46,14 @@ class Room:
         :return:
         """
 
-        # Start thread for room tasks
-        self.room_tasks.init_tasks()
+        # Reset the "reset status
+        self.has_reset = False
 
         # Fill map with points which aren't availiable
         self.room_mapping.regenerate_collision_map()
 
+        # Start thread for room tasks
+        asyncoro.Coro(self.room_tasks.start_task_cycle())
 
     def has_rights(self, user_id, only_owner_check):
 
@@ -258,7 +263,12 @@ class Room:
         print ("[UNLOAD] Room with id (" + str(self.data.id) + ") is unloaded")
 
         self.virtual_counter = -1
+        self.has_reset = True
         self.room_mapping.dispose()
+
+        # Terminate room cycle
+        if self.cycle is None:
+            self.cycle.terminate()
 
         return
 
