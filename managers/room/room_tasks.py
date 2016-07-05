@@ -8,6 +8,7 @@ class RoomTasks:
     def __init__(self, room):
         self.room = room
         self.ticked = 0
+        self.delay = 0.5
         self.tasks = {
             WalkingTask(self.room): 0.5
         }
@@ -28,9 +29,8 @@ class RoomTasks:
                 else:
                     event.do_task()
 
-            self.ticked += 1
-
-            yield coro.sleep (0.5)
+            self.ticked += self.delay
+            yield coro.sleep (self.delay)
 
     def dispose(self):
         """
@@ -38,16 +38,6 @@ class RoomTasks:
         :return:
         """
 
-        self.room = None
-        self.scheduler = None
-
-        self.tasks.clear()
-        self.tasks = None
-
-        self.events.clear()
-        self.events = None
-
         del self.room
-        del self.scheduler
         del self.tasks
-        del self.events
+        del self.delay
