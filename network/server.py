@@ -28,15 +28,11 @@ class Server(asyncore.dispatcher):
         loop_thread = threading.Thread(target=asyncore.loop, name="Asyncore Loop")
         loop_thread.start()
 
-    def handle_accept(self):
+    def handle_accepted(self, sock, addr):
         """
         Override accept handling
         """
-        pair = self.accept()
-
-        if pair is not None:
-            sock, addr = pair
-            #print ('Incoming connection from %s' % repr(addr))
-            handler = Connection(sock)
-            handler.new_session()
+        #print ('Incoming connection from %s' % repr(addr))
+        handler = Connection(sock)
+        handler.new_session()
 
