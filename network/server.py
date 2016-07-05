@@ -32,14 +32,7 @@ class Server(asyncore.dispatcher):
         """
         Override accept handling
         """
-
-        print ('Incoming connection from %s' % repr(addr))
-
+        #print ('Incoming connection from %s' % repr(addr))
         handler = Connection(sock)
-
-        try:
-            session = Session(handler)
-            game.session_manager.connections.append(session)
-        except Exception as e:
-            log.error("Error caught (connection.py): " + str(e))
+        handler.new_session()
 

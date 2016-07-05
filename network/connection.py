@@ -13,6 +13,17 @@ from managers.clients.session import Session
 
 class Connection(asyncore.dispatcher_with_send):
 
+    def new_session(self):
+        """
+        Add new clients to the list of connected sessions
+        """
+
+        try:
+            session = Session(self)
+            game.session_manager.connections.append(session)
+        except Exception as e:
+            log.error("Error caught (connection.py): " + str(e))
+
     def handle_read(self):
         """
         Override asyncore reading with incoming data
