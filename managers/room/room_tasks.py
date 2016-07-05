@@ -12,26 +12,25 @@ class RoomTasks:
             WalkingTask(self.room): 0.5
         }
 
-    def start_task_cycle(self, coro=None):
+    def start_cycle(self, coro=None):
         """
         Run all tasks
         :param coro: generator
         :return:
         """
 
-        while self.room.has_reset is False:
-
+        while len(self.room.get_players()) > 0:
             for event, interval in self.tasks.items():
 
                 if interval > 0:
-                    if self.ticked % interval:
+                    if self.ticked % interval == 0:
                         event.do_task()
                 else:
                     event.do_task()
 
-            yield coro.sleep (0.5)
-
             self.ticked += 1
+
+            yield coro.sleep (0.5)
 
     def dispose(self):
         """

@@ -32,7 +32,6 @@ from communication.messages.outgoing.room.user.RemoveUserMessageComposer import 
 class Room:
     def __init__(self):
         self.disposed = False
-        self.has_reset = False
         self.data = RoomData()
         self.virtual_counter = -1
         self.entities = []
@@ -46,14 +45,11 @@ class Room:
         :return:
         """
 
-        # Reset the "reset status
-        self.has_reset = False
-
         # Fill map with points which aren't availiable
         self.room_mapping.regenerate_collision_map()
 
         # Start thread for room tasks
-        asyncoro.Coro(self.room_tasks.start_task_cycle())
+        self.cycle = asyncoro.Coro(self.room_tasks.start_cycle)
 
     def has_rights(self, user_id, only_owner_check):
 
@@ -263,7 +259,6 @@ class Room:
         print ("[UNLOAD] Room with id (" + str(self.data.id) + ") is unloaded")
 
         self.virtual_counter = -1
-        self.has_reset = True
         self.room_mapping.dispose()
 
         # Terminate room cycle
