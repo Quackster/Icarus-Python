@@ -2,24 +2,35 @@
 Room tasks
 Author: Alex (TheAmazingAussie)
 """
-import game
-import asyncoro
 from managers.room.tasks.walking_task import WalkingTask
 
 class RoomTasks:
     def __init__(self, room):
         self.room = room
-        self.tasks = [
-            WalkingTask(self.room)
-        ]
+        self.ticked = 0
+        self.tasks = {
+            WalkingTask(self.room): 0.5
+        }
 
-    def init_tasks(self):
+    def start_cycle(self, coro=None):
         """
-        Schedule all tasks to run
-        :return: None
+        Run all tasks
+        :param coro: generator
+        :return:
         """
-        for task in self.tasks:
-            asyncoro.Coro(task.run_task)
+
+        while len(self.room.get_players()) > 0:
+            for event, interval in self.tasks.items():
+
+                if interval > 0:
+                    if self.ticked % interval == 0:
+                        event.do_task()
+                else:
+                    event.do_task()
+
+            self.ticked += 1
+
+            yield coro.sleep (0.5)
 
     def dispose(self):
         """
