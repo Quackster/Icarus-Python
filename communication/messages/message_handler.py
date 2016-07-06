@@ -5,15 +5,13 @@ Author: Alex (TheAmazingAussie)
 
 # noinspection PyUnresolvedReferences
 
-from communication.messages.incoming.login.VersionCheckMessageEvent import *
 from communication.messages.incoming.login.AuthenticateMessageEvent import *
 from communication.messages.incoming.login.UniqueIDMessageEvent import *
-
-from communication.messages.incoming.user.CurrencyBalanceMessageEvent import *
-from communication.messages.incoming.user.InfoRetrieveMessageEvent import *
-
+from communication.messages.incoming.login.VersionCheckMessageEvent import *
 from communication.messages.incoming.navigator.NewNavigatorMessageEvent import *
 from communication.messages.incoming.navigator.SearchNewNavigatorEvent import *
+from communication.messages.incoming.user.CurrencyBalanceMessageEvent import *
+from communication.messages.incoming.user.InfoRetrieveMessageEvent import *
 
 # Misc
 from communication.messages.incoming.misc.EventLogMessageEvent import *
@@ -23,12 +21,12 @@ from communication.messages.incoming.misc.LatencyTestMessageEvent import *
 from communication.messages.incoming.room.RoomInfoMessageEvent import *
 from communication.messages.incoming.room.EnterRoomMessageEvent import *
 from communication.messages.incoming.room.HeightMapMessageEvent import *
-from communication.messages.incoming.room.LeaveRoomMessageEvent import *
+from communication.messages.incoming.room.user.LeaveRoomMessageEvent import *
 from communication.messages.incoming.room.user.WalkMessageEvent import *
 
 import communication.headers.incoming as incoming
 import util.logging as log
-import sys, os
+
 
 class MessageHandler:
 
