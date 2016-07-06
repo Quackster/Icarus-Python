@@ -21,7 +21,7 @@ MOVE_POINTS = [
 ]
 
 
-def make_path(position, end, size_x, size_y, room):
+def make_path(position, end, room):
     """
     Create programming path
     :param position:
@@ -30,7 +30,7 @@ def make_path(position, end, size_x, size_y, room):
     :return:
     """
     squares = []
-    nodes = make_path_reversed(position, end, size_x, size_y, room)
+    nodes = make_path_reversed(position, end, room)
 
     if nodes is not None:
         while nodes.next_node is not None:
@@ -40,10 +40,10 @@ def make_path(position, end, size_x, size_y, room):
     return squares[::-1] # Reverse list
 
 
-def make_path_reversed(position, end, size_x, size_y, room):
+def make_path_reversed(position, end, room):
 
     open_list = []
-    map = [[None for y in range(0, size_y)] for x in range(0, size_x)]
+    map = room.get_model().get_2d_array(None)
     node = None
     tmp = None
     cost = 0
