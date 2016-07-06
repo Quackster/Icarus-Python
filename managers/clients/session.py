@@ -39,7 +39,7 @@ class Session:
 
         # Leave room when disconnect
         if self.room_user.in_room():
-            self.room_user.room.leave_room(self, False)
+            self.room_user.room.leave_room(self, False, False)
 
         # Dispose all rooms if we can
         for room in game.room_manager.get_player_rooms(self.details.id):

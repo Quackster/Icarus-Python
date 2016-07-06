@@ -8,7 +8,7 @@ class EnterRoomMessageEvent:
 
         if room is None:
             return
-        
+
         if session.room_user.room is not None:
             session.room_user.room.leave_room(session, False)
 

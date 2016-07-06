@@ -153,7 +153,7 @@ class Room:
         # Send room info... again
         #session.send(RoomDataMessageComposer(self, session, True, True))
 
-    def leave_room(self, session, hotel_view):
+    def leave_room(self, session, hotel_view, dispose=True):
         """
         Kick user from room, will lower room population
         :param session: player to leave room
@@ -176,7 +176,8 @@ class Room:
         room_user.stop_walking(False)
         room_user.reset()
 
-        self.dispose()
+        if dispose:
+            self.dispose()
 
     def get_virtual_id(self):
         """
@@ -246,7 +247,7 @@ class Room:
             self.__reset_state()
 
             # Delete from room collection if owner goes offline and there's no more users in the room
-            if game.session_manager.find_by_id(self.data.owner_id) is None and self.data.type == "private":
+            if game.session_manager.find_by_id(self.data.owner_id) is None and self.data.type == 0:
 
                 # Call method to erase data that share common dispose calls
                 self.__erase()
@@ -259,8 +260,6 @@ class Room:
 
         if self.disposed:
             return
-
-        print ("[UNLOAD] Room with id (" + str(self.data.id) + ") is unloaded")
 
         self.virtual_counter = -1
         self.room_mapping.dispose()
@@ -277,14 +276,17 @@ class Room:
         :return:
         """
 
+        print ("[UNLOAD] Room with id (" + str(self.data.id) + ") is disposed")
+
+        game.room_manager.rooms.pop(self.data.id, None)
+
         self.room_tasks.dispose()
         self.entities.clear()
 
         del self.room_tasks
         del self.entities
         del self.room_mapping
-
-        game.room_manager.rooms.pop(self.data.id, None)
+        del self.data
 
         self.disposed = True
 
