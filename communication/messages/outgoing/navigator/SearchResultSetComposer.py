@@ -53,9 +53,6 @@ class SearchResultSetComposer:
             if tab.show_categories:
                 for category in categories:
                     self.response.write_string(category.name.lower().replace(" ", "_").replace(",", "").replace("&", "").replace("__", "_"))
-
-                    print (category.name.lower().replace(" ", "_").replace(",", "").replace("&", "").replace("__", "_") + "=" + category.name)
-
                     self.response.write_string("")
                     self.response.write_int(2)
                     self.response.write_bool(False)
