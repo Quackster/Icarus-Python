@@ -21,6 +21,9 @@ class WalkingTask:
         update_users = []
         for entity in self.room.entities:
 
+            if entity.disposed:
+                continue
+
             room_user = entity.room_user
 
             if room_user.position.same_as(room_user.goal):

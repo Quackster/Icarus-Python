@@ -87,4 +87,7 @@ class RoomMapping:
         Dispose all collision map properties
         :return:
         """
-        del self.collision_map
+        try:
+            del self.collision_map
+        except Exception as e:
+            return

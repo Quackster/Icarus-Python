@@ -16,6 +16,6 @@ class NewNavigatorMessageEvent:
         :param message: the incoming message
         """
 
-        session.send(FlatCategoriesMessageComposer(game.navigator_manager.get_navigator_categories(), session.details.rank))
-        session.send(NavigatorCategoriesComposer(game.navigator_manager.get_navigator_categories()))
+        session.send(FlatCategoriesMessageComposer(game.navigator_manager.categories, session.details.rank))
+        session.send(NavigatorCategoriesComposer(game.navigator_manager.categories))
         session.send(NavigatorMetaDataComposer())

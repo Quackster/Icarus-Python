@@ -16,6 +16,7 @@ class Session:
         self.room_user = RoomUser(self)
         self.connection = SessionConnection(self)
         self.details = Details()
+        self.disposed = False
 
     def send(self, data):
         """
@@ -30,12 +31,19 @@ class Session:
         Force lose socket on demand
         """
 
+        # Character is disposed, don't use if disposed - else you'll fuckup the whole server you dumb cunt! :o
+        self.disposed = True
+
+        # Remove user from list of connections
+        game.session_manager.connections.remove(self)
+
         # Leave room when disconnect
         if self.room_user.in_room():
             self.room_user.room.leave_room(self, False)
 
-        # Remove user from list of connections
-        game.session_manager.connections.remove(self)
+        # Dispose all rooms if we can
+        for room in game.room_manager.get_player_rooms(self.details.id):
+            room.dispose(False)
 
         # Dispose user objects
         self.room_user.dispose()

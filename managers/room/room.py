@@ -150,6 +150,9 @@ class Room:
         is_owner = self.has_rights(session.details.id, True)
         session.send(RoomOwnerRightsComposer(self.data.id, is_owner))
 
+        # Send room info... again
+        session.send(RoomDataMessageComposer(self, session, True, True))
+
     def leave_room(self, session, hotel_view):
         """
         Kick user from room, will lower room population
@@ -173,7 +176,7 @@ class Room:
         room_user.stop_walking(False)
         room_user.reset()
 
-        self.dispose(False)
+        self.dispose()
 
     def get_virtual_id(self):
         """
@@ -216,7 +219,7 @@ class Room:
 
         return len([entity for entity in self.entities if entity.details.id == entity_id]) > 0
 
-    def dispose(self, force_disposal):
+    def dispose(self, force_disposal=False):
         """
         Dispose all data
         :param force_disposal:
@@ -254,13 +257,16 @@ class Room:
         :return:
         """
 
+        if self.disposed:
+            return
+
         print ("[UNLOAD] Room with id (" + str(self.data.id) + ") is unloaded")
 
         self.virtual_counter = -1
         self.room_mapping.dispose()
 
         # Terminate room cycle
-        if self.cycle is None:
+        if self.cycle is not None:
             self.cycle.terminate()
 
         return
