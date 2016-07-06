@@ -9,7 +9,7 @@ class NavigatorCategoriesComposer:
         self.response.write_int(4 + len(categories))
 
         for category in categories:
-            self.response.write_string("category__" + category)
+            self.response.write_string("category__" + category.name)
 
         self.response.write_string("recommended")
         self.response.write_string("new_ads")

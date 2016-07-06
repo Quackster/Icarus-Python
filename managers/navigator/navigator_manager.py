@@ -20,6 +20,7 @@ class NavigatorManager:
 
     def load_manager(self):
         self.tabs = dao.navigator.get_tabs(-1)
+        self.categories = dao.navigator.get_categories()
 
     def get_tab(self, name):
         """
@@ -36,6 +37,14 @@ class NavigatorManager:
         :return: list of child tab instances
         """
         return [tab for tab in self.tabs if tab.child_id == -1]
+
+    def get_navigator_categories(self):
+        """
+        Returns any categories that have been configured to show in navigator
+        :return:
+        """
+
+        return [category for category in self.categories if category.navigator_visible]
 
     def get_populator(self, name):
         """

@@ -25,9 +25,9 @@ class RoomTasks:
 
                 if interval > 0:
                     if self.ticked % interval == 0:
-                        event.do_task()
+                        event.execute()
                 else:
-                    event.do_task()
+                    event.execute()
 
             self.ticked += self.delay
             yield coro.sleep (self.delay)

@@ -10,7 +10,7 @@ class WalkingTask:
         self.room = room
         self.delay = 0.5
 
-    def do_task(self):
+    def execute(self):
         """
         Run walking task
         :param coro: generator

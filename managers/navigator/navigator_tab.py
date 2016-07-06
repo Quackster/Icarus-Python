@@ -14,6 +14,7 @@ class NavigatorTab:
         self.button_type = 0
         self.closed = False
         self.thumbnail = False
+        self.show_categories = False
         self.populator = None
 
     def get_child_tabs(self):

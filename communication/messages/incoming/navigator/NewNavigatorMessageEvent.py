@@ -2,7 +2,7 @@
 Load new navigator event
 Author: Alex (TheAmazingAussie)
 """
-
+import game
 from communication.messages.outgoing.navigator.FlatCategoriesMessageComposer import FlatCategoriesMessageComposer
 from communication.messages.outgoing.navigator.NavigatorCategoriesComposer import NavigatorCategoriesComposer
 from communication.messages.outgoing.navigator.NavigatorMetaDataComposer import NavigatorMetaDataComposer
@@ -16,8 +16,6 @@ class NewNavigatorMessageEvent:
         :param message: the incoming message
         """
 
-        categories = ["No Category", "School, Daycare & Adoption Rooms", "Help Centre, Guide & Service Rooms", "Hair Salons & Modelling Rooms", "Gaming & Race Rooms", "Trading & Shopping Rooms", "Maze & Theme Park Rooms", "Chat, Chill & Discussion Rooms", "Club & Group Rooms", "Restaurant, Bar & Night Club Rooms", "Themed & RPG Rooms", "Staff Rooms"]
-
-        session.send(FlatCategoriesMessageComposer(categories))
-        session.send(NavigatorCategoriesComposer(categories))
+        session.send(FlatCategoriesMessageComposer(game.navigator_manager.get_navigator_categories(), session.details.rank))
+        session.send(NavigatorCategoriesComposer(game.navigator_manager.get_navigator_categories()))
         session.send(NavigatorMetaDataComposer())

@@ -45,6 +45,8 @@ class Room:
         :return:
         """
 
+        print ("topkappa")
+
         # Fill map with points which aren't availiable
         self.room_mapping.regenerate_collision_map()
 
@@ -212,11 +214,7 @@ class Room:
         :return:
         """
 
-        for entity in self.entities:
-            if entity.details.id == entity_id:
-                return True
-
-        return False
+        return len([entity for entity in self.entities if entity.details.id == entity_id]) > 0
 
     def dispose(self, force_disposal):
         """

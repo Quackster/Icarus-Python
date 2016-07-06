@@ -1,9 +1,14 @@
+import game
 import communication.headers.outgoing as outgoing
+
 from communication.data_streams.response import Response
 
 
 class SearchResultSetComposer:
     def __init__(self, session, tab, search_query):
+
+        categories = game.navigator_manager.get_navigator_categories()
+
         self.response = Response(outgoing.SearchResultSetComposer)
         self.response.write_string(tab.tab_name)
         self.response.write_string(search_query)
@@ -20,7 +25,10 @@ class SearchResultSetComposer:
             else:
                 tabs += (tab.get_child_tabs())
 
-            self.response.write_int(len(tabs))
+            if tab.show_categories:
+                self.response.write_int(len(tabs) + len(categories))
+            else:
+                self.response.write_int(len(tabs))
 
             for navigator_tab in tabs:
                 self.response.write_string(navigator_tab.tab_name)
@@ -41,6 +49,24 @@ class SearchResultSetComposer:
 
                 for room in _rooms:
                     room.data.serialise(self.response, False)
+
+            if tab.show_categories:
+                for category in categories:
+                    self.response.write_string(category.name.lower().replace(" ", "_").replace(",", "").replace("&", "").replace("__", "_"))
+
+                    print (category.name.lower().replace(" ", "_").replace(",", "").replace("&", "").replace("__", "_") + "=" + category.name)
+
+                    self.response.write_string("")
+                    self.response.write_int(2)
+                    self.response.write_bool(False)
+                    self.response.write_int(0)
+
+                    _rooms = []
+                    self.response.write_int(len(_rooms)) # room_dao count
+
+                    for room in _rooms:
+                        room.data.serialise(self.response, False)
+
 
 
         else:
