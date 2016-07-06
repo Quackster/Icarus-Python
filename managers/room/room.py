@@ -151,7 +151,7 @@ class Room:
         session.send(RoomOwnerRightsComposer(self.data.id, is_owner))
 
         # Send room info... again
-        session.send(RoomDataMessageComposer(self, session, True, True))
+        #session.send(RoomDataMessageComposer(self, session, True, True))
 
     def leave_room(self, session, hotel_view):
         """
