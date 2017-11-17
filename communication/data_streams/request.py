@@ -52,7 +52,7 @@ class Request:
         Get received packet as string in ISO-8859-1 encoding with replaced charaacters
         :return: packet as string
         """
-        _message = self.stream.decode("ISO-8859-1")[6:]
+        _message = self.stream.decode("ISO-8859-1")[2:]
 
         for char in range(0, 14):
             _message = _message.replace(chr(char), "{" + str(char) + "}")

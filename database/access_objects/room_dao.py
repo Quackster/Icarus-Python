@@ -6,7 +6,6 @@ import game
 from managers.room.room import Room
 from managers.room.model.room_model import RoomModel
 
-
 class RoomDao:
     def __init__(self, database_connection):
         self.database_connection = database_connection
@@ -25,6 +24,7 @@ class RoomDao:
         db_cur.close()
 
         return self.room_models
+
 
     def get_player_rooms(self, details, store_in_memory):
         """

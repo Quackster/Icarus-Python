@@ -29,8 +29,8 @@ class RoomModel:
 
         for y in range(0, self.map_size_y):
 
-            if y > 0:
-                temporary[y] = temporary[y][1:] # Substring 1
+            #if y > 0:
+            #    temporary[y] = temporary[y][1:] # Substring 1
 
             for x in range (0, self.map_size_x):
                 square = temporary[y][x:x + 1].strip().lower()
@@ -41,11 +41,11 @@ class RoomModel:
 
                 elif self.is_numeric(square):
                     self.squares[x][y] = OPEN
-                    self.square_height[x][y] = int(RoomModel.parse(square))
+                    self.square_height[x][y] = float(RoomModel.parse(square))
 
                 if self.door_x == x and self.door_y == y:
                     self.squares[x][y] = OPEN
-                    self.square_height[x][y] = int(self.door_z)
+                    self.square_height[x][y] = float(self.door_z)
 
                 self.square_char[x][y] = square
 
@@ -145,7 +145,7 @@ class RoomModel:
             return False
 
     def get_2d_array(self, data_type=None):
-        return [[data_type for y in range(-1, self.map_size_y)] for x in range(-1, self.map_size_x)]
+        return [[data_type for y in range(0, self.map_size_y)] for x in range(0, self.map_size_x)]
 
     def get_door_point(self):
         return Point(self.door_x, self.door_y, self.door_z)

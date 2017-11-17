@@ -8,6 +8,7 @@ import game
 from managers.clients.session_details import *
 from managers.room.room_user import RoomUser
 
+
 class Session:
 
     def __init__(self, socket):
