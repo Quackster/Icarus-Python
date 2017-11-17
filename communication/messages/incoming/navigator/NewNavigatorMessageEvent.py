@@ -6,6 +6,7 @@ import game
 from communication.messages.outgoing.navigator.FlatCategoriesMessageComposer import FlatCategoriesMessageComposer
 from communication.messages.outgoing.navigator.NavigatorCategoriesComposer import NavigatorCategoriesComposer
 from communication.messages.outgoing.navigator.NavigatorMetaDataComposer import NavigatorMetaDataComposer
+from communication.messages.outgoing.navigator.NavigatorPreferencesComposer import NavigatorPreferencesComposer
 
 
 class NewNavigatorMessageEvent:
@@ -19,3 +20,4 @@ class NewNavigatorMessageEvent:
         session.send(FlatCategoriesMessageComposer(game.navigator_manager.categories, session.details.rank))
         session.send(NavigatorCategoriesComposer(game.navigator_manager.categories))
         session.send(NavigatorMetaDataComposer())
+        session.send(NavigatorPreferencesComposer())

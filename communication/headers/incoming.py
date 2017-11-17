@@ -6,7 +6,7 @@ Author: Alex (TheAmazingAussie)
 VersionCheckMessageEvent = 4000#4000
 UniqueIDMessageEvent = 544#3659
 AuthenticateMessageEvent = 2093#1490
-InfoRetrieveMessageEvent = -1978#1978
+InfoRetrieveMessageEvent = 413#1978
 GetCurrencyBalanceMessageEvent = 3736#1386
 LatencyTestMessageEvent = 1483#3307
 LeaveRoomMessageEvent = 3153#394

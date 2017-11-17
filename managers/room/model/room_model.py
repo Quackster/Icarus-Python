@@ -41,11 +41,11 @@ class RoomModel:
 
                 elif self.is_numeric(square):
                     self.squares[x][y] = OPEN
-                    self.square_height[x][y] = float(square)
+                    self.square_height[x][y] = int(RoomModel.parse(square))
 
                 if self.door_x == x and self.door_y == y:
                     self.squares[x][y] = OPEN
-                    self.square_height[x][y] = float(self.door_z)
+                    self.square_height[x][y] = int(self.door_z)
 
                 self.square_char[x][y] = square
 
@@ -65,10 +65,81 @@ class RoomModel:
             string_builder += chr(13)
 
         self.floor_map = string_builder
+        
+    def parse(square):
 
-    def is_numeric(self, input):
+        if square == "0":
+            return 0
+        if square == "1":
+            return 1
+        if square == "2":
+            return 2
+        if square == "3":
+            return 3
+        if square == "4":
+            return 4
+        if square == "5":
+            return 5
+        if square == "6":
+            return 6
+        if square == "7":
+            return 7
+        if square == "8":
+            return 8
+        if square == "9":
+            return 9
+        if square == "a":
+            return 10
+        if square == "b":
+            return 11
+        if square == "c":
+            return 12
+        if square == "d":
+            return 13
+        if square == "e":
+            return 14
+        if square == "f":
+            return 15
+        if square == "g":
+            return 16
+        if square == "h":
+            return 17
+        if square == "i":
+            return 18
+        if square == "j":
+            return 19
+        if square == "k":
+            return 20
+        if square == "l":
+            return 21
+        if square == "m":
+            return 22
+        if square == "n":
+            return 23
+        if square == "o":
+            return 24
+        if square == "p":
+            return 25
+        if square == "q":
+            return 26
+        if square == "r":
+            return 27
+        if square == "s":
+            return 28
+        if square == "t":
+            return 29
+        if square == "u":
+            return 30
+        if square == "v":
+            return 31
+        if square == "w":
+            return 32
+
+        return -1
+
+    def is_numeric(self, square):
         try:
-            number = float(input)
+            number = float(square)
             return True
         except Exception as e:
             return False
