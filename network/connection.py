@@ -30,11 +30,11 @@ class Connection(asyncore.dispatcher_with_send):
         """
 
         #try:
-        data = self.recv(1024)
+        data = self.recv(4)
         session = game.session_manager.find_by_socket(self)
 
         if data:
-            message_decoder.parse(session, data)
+            message_decoder.parse(session, data, self)
         else:
             session.close()
         #except Exception as e:

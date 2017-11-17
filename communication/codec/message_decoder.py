@@ -7,11 +7,12 @@ import game
 from communication.data_streams.request import *
 
 
-def parse(session, response):
+def parse(session, response, connection):
     """
     Parse incoming data from client
     :param session: the clients who is currently connected
     :param response: the message to parse
+    :param connection: the connection
     """
 
     if response[0] == 60:
@@ -22,8 +23,7 @@ def parse(session, response):
                      + "</cross-domain-policy>\0")
     else:
 
-        stream = Request(response)
-        message_length = stream.read_int()
+        stream = Request(connection.recv(struct.unpack_from(">i", response, 0)[0]))
         message_header = stream.read_short()
 
         game.message_handler.incoming_message(session, message_header, stream)

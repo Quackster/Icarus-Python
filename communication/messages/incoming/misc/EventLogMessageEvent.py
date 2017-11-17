@@ -6,4 +6,5 @@ Author: Alex (TheAmazingAussie)
 
 class EventLogMessageEvent:
     def handle(self, session, message):
-        session.connection.packet_check()
+        # Events here
+        return None
