@@ -18,7 +18,7 @@ class RoomModel:
         self.door_z = door_z
         self.door_rotation = door_rotation
 
-        temporary = self.heightmap.split(chr(13))
+        temporary = self.heightmap.split("{13}")
 
         self.map_size_x = len(temporary[0])
         self.map_size_y = len(temporary)

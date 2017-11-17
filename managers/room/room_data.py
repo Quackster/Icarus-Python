@@ -11,7 +11,7 @@ class RoomData:
         self.owner_id = -1
         self.owner_name = "Alex"
         self.name = ""
-        self.state = ""
+        self.state = 0
         self.password = ""
         self.thumbnail = ""
         self.users_now = 0

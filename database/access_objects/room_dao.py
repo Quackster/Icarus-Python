@@ -88,21 +88,35 @@ class RoomDao:
         room.data.id = row[0]
         room.data.name = row[1]
         room.data.type = row[2]
-        room.data.owner_id = row[3]
-        room.data.group_id = row[4]
-        room.data.description = row[5]
-        room.data.password = row[6]
-        room.data.users_now = row[7]
-        room.data.users_max = row[8]
-        room.data.model = row[9]
-        room.data.wall = row[10]
-        room.data.floor = row[11]
-        room.data.landscape = row[12]
-        room.data.tags = row[13].split(",")
-        room.data.trade_state = row[14]
-        room.data.state = row[15]
-        room.data.score = row[16]
-        room.data.category = row[17]
-        room.data.allow_pets = row[18] == 1
-        room.data.allow_pets_eat = row[19] == 1
-        room.data.allow_walkthrough = row[20] == 1
+        room.data.owner_id = row[4]
+        room.data.group_id = row[5]
+        room.data.description = row[7]
+        room.data.password = row[8]
+        room.data.users_now = row[9]
+        room.data.users_max = row[10]
+        room.data.model = row[11]
+        room.data.wall = row[12]
+        room.data.floor = row[13]
+        room.data.landscape = row[14]
+        room.data.tags = row[15].split(",")
+        room.data.trade_state = row[16]
+
+        _state = row[17]
+
+        if _state == "OPEN":
+            room.data.state == 0
+
+        if _state == "INVISIBLE":
+            room.data.state == 3
+
+        if _state == "DOORBELL":
+            room.data.state == 1
+
+        if _state == "PASSWORD":
+            room.data.state == 2
+
+        room.data.score = row[18]
+        room.data.category = row[19]
+        room.data.allow_pets = row[20] == 1
+        room.data.allow_pets_eat = row[21] == 1
+        room.data.allow_walkthrough = row[22] == 1
