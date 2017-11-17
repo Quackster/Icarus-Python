@@ -15,7 +15,7 @@ class UserDao:
         """
         db_con = self.database_connection.create_connection()
         db_cur = db_con.cursor()
-        db_cur.execute("SELECT id, username, rank, motto, figure, credits FROM users WHERE sso_ticket = %s LIMIT 1", (sso_ticket))
+        db_cur.execute("SELECT id, username, rank, mission, figure, credits FROM users WHERE sso_ticket = %s LIMIT 1", (sso_ticket))
 
         has_row = db_cur.rowcount > 0
 

@@ -50,12 +50,12 @@ class NavigatorDao:
 
         db_con = self.database_connection.create_connection()
         db_cur = db_con.cursor()
-        db_cur.execute("SELECT id, name, min_rank, navigator_visible FROM navigator_categories")
+        db_cur.execute("SELECT id, title, min_rank FROM navigator_categories")
 
         categories = []
 
         for row in db_cur:
-            category = NavigatorCategory(row[0], row[1], row[2], row[3])
+            category = NavigatorCategory(row[0], row[1], row[2])
             categories.append(category)
 
         db_con.close()

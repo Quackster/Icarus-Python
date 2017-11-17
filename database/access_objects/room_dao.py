@@ -34,6 +34,7 @@ class RoomDao:
 
         db_con = self.database_connection.create_connection()
         db_cur = db_con.cursor()
+
         db_cur.execute("SELECT * FROM rooms WHERE owner_id = %s", (details.id))
 
         rooms = []

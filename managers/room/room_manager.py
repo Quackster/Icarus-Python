@@ -34,4 +34,6 @@ class RoomManager:
             if room.data.owner_id == user_id:
                 _rooms.append(room)
 
+        #print ("ROOMS: " + str(len(_rooms)))
+
         return _rooms
