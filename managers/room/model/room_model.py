@@ -38,6 +38,7 @@ class RoomModel:
                 if square == "x":
                     self.squares.append(x)
                     self.squares[x][y] = CLOSED
+
                 elif self.is_numeric(square):
                     self.squares[x][y] = OPEN
                     self.square_height[x][y] = float(square)

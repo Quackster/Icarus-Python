@@ -89,7 +89,7 @@ class Room:
 
         # Wall design
         if wall_data > 0:
-            session.send(RoomSpacesMessageComposer("wall", self.data.floor))
+            session.send(RoomSpacesMessageComposer("wall", self.data.wall))
 
         # Landscape design
         session.send(RoomSpacesMessageComposer("landscape", self.data.landscape))

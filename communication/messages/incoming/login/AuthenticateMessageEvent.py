@@ -10,8 +10,7 @@ from communication.messages.outgoing.login.UniqueMachineIDMessageComposer import
 from communication.messages.outgoing.login.AuthenticationOKMessageComposer import *
 from communication.messages.outgoing.login.HomeRoomMessageComposer import *
 from communication.messages.outgoing.login.LandingWidgetMessageComposer import *
-from communication.messages.outgoing.user.MOTDMessageComposer import *
-
+from communication.messages.outgoing.login.AvailabilityMessageComposer import *
 
 class AuthenticateMessageEvent:
     def handle(self, session, message):
@@ -30,6 +29,7 @@ class AuthenticateMessageEvent:
         session.send(UniqueMachineIDMessageComposer(session.details.machine_id))
         session.send(HomeRoomMessageComposer(0, False))
         session.send(LandingWidgetMessageComposer())
+        session.send(AvailabilityMessageComposer())
 
         # MOTD
         #session.send(MOTDMessageComposer("Hello, welcome to Icarus Server\n\nThe only Habbo hotel private server written in Python!"))
